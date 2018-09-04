@@ -141,4 +141,22 @@
        ]];
 }
 
+-(UIView*)addLineSeparateWithLelfPadding:(CGFloat)leftPadding{
+    UIView *line = [UIView new];
+    line.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self addStackView:line];
+    [self addConstraints:
+     @[
+       [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:leftPadding],
+       [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+       [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+       [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5]
+       ]];
+    return line;
+}
+
+-(UIView*)addLineSeparate{
+    return [self addLineSeparateWithLelfPadding:0];
+}
+
 @end

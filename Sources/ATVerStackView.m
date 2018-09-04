@@ -16,7 +16,7 @@
     self = [super init];
     if (self) {
         self.axis = UILayoutConstraintAxisVertical;
-        self.alignment = UIStackViewAlignmentCenter;
+        self.alignment = UIStackViewAlignmentLeading;
         self.distribution = UIStackViewDistributionFill;
     }
     return self;

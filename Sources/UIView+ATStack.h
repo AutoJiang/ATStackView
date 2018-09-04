@@ -38,4 +38,8 @@
 
 -(ATVerStackView *)addStackVerEqualWithInset:(UIEdgeInsets)inset;
 
+-(UIView*)addLineSeparate;
+
+-(UIView*)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
+
 @end
