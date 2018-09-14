@@ -42,4 +42,8 @@
 
 -(UIView*)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
+-(void)setHiddenWithoutLayout:(BOOL)hidden;
+
+-(BOOL)hiddenWithoutLayout;
+
 @end

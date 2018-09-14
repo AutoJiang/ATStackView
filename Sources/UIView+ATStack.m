@@ -7,6 +7,10 @@
 //
 
 #import "UIView+ATStack.h"
+#import <objc/runtime.h>
+
+#define kHiddenWithoutLayout @"hiddenWithoutLayout"
+#define kLastAlpha @"lastAlpha"
 
 @implementation UIView(Stack)
 
@@ -29,14 +33,14 @@
 -(ATVerStackView *)addStackVerWithInset:(UIEdgeInsets)inset{
     ATVerStackView *stack = [ATVerStackView getStackVer];
     [self addStackView:stack];
-    [self addStackVerConstraintWithStack:stack inset:inset];
+    [self addStackVerConstraintWithStack:stack inset:inset isNeedPriority:true];
     return stack;
 }
 
 -(ATHorStackView *)addStackHorWithInset:(UIEdgeInsets)inset{
     ATHorStackView *stack = [ATHorStackView getStackHor];
     [self addStackView:stack];
-    [self addStackHorConstraintWithStack:stack inset:inset];
+    [self addStackHorConstraintWithStack:stack inset:inset isNeedPriority:true];
     return stack;
 }
 
@@ -51,14 +55,14 @@
 -(ATHorStackView *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
     ATHorStackView *stack = [ATHorStackView getStackHorEqueal];
     [self addStackView:stack];
-    [self addStackHorConstraintWithStack:stack inset:inset];
+    [self addStackHorConstraintWithStack:stack inset:inset isNeedPriority:false];
     return stack;
 }
 
 -(ATVerStackView *)addStackVerEqualWithInset:(UIEdgeInsets)inset{
     ATVerStackView *stack = [ATVerStackView getStackVerEqueal];
     [self addStackView:stack];
-    [self addStackVerConstraintWithStack:stack inset:inset];
+    [self addStackVerConstraintWithStack:stack inset:inset isNeedPriority:false];
     return stack;
 }
 
@@ -83,7 +87,7 @@
     stackView.translatesAutoresizingMaskIntoConstraints = false;
 }
 
--(void)addStackVerConstraintWithStack:(ATVerStackView*)stack inset:(UIEdgeInsets)inset {
+-(void)addStackVerConstraintWithStack:(ATVerStackView*)stack inset:(UIEdgeInsets)inset isNeedPriority:(BOOL)isNeedPriority{
     if ([self isMemberOfClass:[UIScrollView class]]) {
         //        [stack mas_makeConstraints:^(MASConstraintMaker *make) {
         //            make.edges.equalTo(self);
@@ -100,7 +104,9 @@
         return;
     }
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:stack attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-inset.bottom];
-    [bottomConstraint setPriority:100];
+    if (isNeedPriority) {
+        [bottomConstraint setPriority:100];
+    }
     [self addConstraints:
      @[
        [NSLayoutConstraint constraintWithItem:stack attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:inset.top],
@@ -110,7 +116,7 @@
        ]];
 }
 
--(void)addStackHorConstraintWithStack:(ATHorStackView*)stack inset:(UIEdgeInsets)inset{
+-(void)addStackHorConstraintWithStack:(ATHorStackView*)stack inset:(UIEdgeInsets)inset isNeedPriority:(BOOL)isNeedPriority{
     if ([self isMemberOfClass:[UIScrollView class]]) {
         [self addConstraints:
          @[
@@ -123,7 +129,9 @@
         return;
     }
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:stack attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-inset.right];
-    [rightConstraint setPriority:100];
+    if (isNeedPriority) {
+        [rightConstraint setPriority:100];
+    }
     [self addConstraints:
      @[
        [NSLayoutConstraint constraintWithItem:stack attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:inset.top],
@@ -150,7 +158,7 @@
        [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:leftPadding],
        [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
        [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
-       [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5]
+      [NSLayoutConstraint constraintWithItem:line attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5]
        ]];
     return line;
 }
@@ -159,4 +167,27 @@
     return [self addLineSeparateWithLelfPadding:0];
 }
 
+
+#pragma mark - about hiddenWithoutLayout
+-(void)setHiddenWithoutLayout:(BOOL)hidden{
+    NSNumber *value = objc_getAssociatedObject(self, kHiddenWithoutLayout);
+    if ([value boolValue] == hidden) {
+        return;
+    }
+    objc_setAssociatedObject(self, kHiddenWithoutLayout, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (hidden) {
+        objc_setAssociatedObject(self, kLastAlpha, @(self.alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        self.alpha = 0;
+    }else{
+        NSNumber *lastAlpha = objc_getAssociatedObject(self, kLastAlpha);
+        if (lastAlpha) {
+            self.alpha = [lastAlpha floatValue];
+        }
+    }
+}
+
+-(BOOL)hiddenWithoutLayout{
+    NSNumber *value = objc_getAssociatedObject(self, kHiddenWithoutLayout);
+    return [value boolValue];
+}
 @end

@@ -16,7 +16,7 @@
     self = [super init];
     if (self) {
         self.axis = UILayoutConstraintAxisVertical;
-        self.alignment = UIStackViewAlignmentLeading;
+        self.alignment = UIStackViewAlignmentCenter;
         self.distribution = UIStackViewDistributionFill;
     }
     return self;
@@ -36,6 +36,7 @@
 
 +(ATVerStackView*)getStackVerEqueal{
     ATVerStackView *stack = [ATVerStackView getStackVer];
+    stack.alignment = UIStackViewAlignmentCenter;
     stack.distribution = UIStackViewDistributionFillEqually;
     return stack;
 }
