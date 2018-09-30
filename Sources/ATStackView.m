@@ -52,4 +52,14 @@
     [self.tailArray addObject:view];
 }
 
+#pragma mark - userInteraction
+//防止事件响应链被拦截
+-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *view = [super hitTest:point withEvent:event];
+    if ([view isEqual:self]) {
+        return nil;
+    }
+    return view;
+}
+
 @end

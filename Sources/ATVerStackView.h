@@ -10,7 +10,7 @@
 #import "ATStackView.h"
 @interface ATVerStackView : ATStackView
 
-/**创建一个垂直方向、子控件从上自下布局的栈*/
+/**创建一个垂直方向、子控件从上到下布局的栈*/
 +(ATVerStackView *)getStackVer;
 
 /**创建一个垂直方向、子控件居中布局的栈*/

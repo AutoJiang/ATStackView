@@ -12,17 +12,24 @@
 
 @interface UIView(Stack)
 
-//快速添加一个StackView
+//快速为view添加一个StackView，返回ATVerStackView
+
+/**快速创建一个水平方向、子控件从上到下布局的栈*/
 -(ATVerStackView *)addStackVer;
 
+/**快速创建一个水平方向、子控件从左到右布局的栈*/
 -(ATHorStackView *)addStackHor;
 
+/**快速创建一个水平方向、子控件居中布局的栈*/
 -(ATHorStackView *)addStackHorCenter;
 
+/**快速创建一个垂直方向、子控件居中布局的栈*/
 -(ATVerStackView *)addStackVerCenter;
 
+/**快速创建一个水平方向、子控件均分的栈*/
 -(ATHorStackView *)addStackHorEqual;
 
+/**快速创建一个垂直方向、子控件均分的栈*/
 -(ATVerStackView *)addStackVerEqual;
 
 //inset代表内间距
@@ -38,10 +45,12 @@
 
 -(ATVerStackView *)addStackVerEqualWithInset:(UIEdgeInsets)inset;
 
--(UIView*)addLineSeparate;
+//添加分割线
+-(UIView *)addLineSeparate;
 
--(UIView*)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
+-(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
+//隐藏元素，但是不改变其他元素的位置
 -(void)setHiddenWithoutLayout:(BOOL)hidden;
 
 -(BOOL)hiddenWithoutLayout;

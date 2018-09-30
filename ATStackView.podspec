@@ -9,5 +9,5 @@ s.source = { :git => 'https://github.com/AutoJiang/ATStackView.git', :tag => s.v
 s.requires_arc = true
 s.ios.deployment_target = '11.0'
 s.source_files = 'Sources/*.{h,m}'
-s.resources = 'Sources/images/*.{png,xib}'
+
 end

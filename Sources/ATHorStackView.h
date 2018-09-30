@@ -11,7 +11,7 @@
 
 @interface ATHorStackView : ATStackView
 
-/**创建一个水平方向、子控件从上自下布局的栈*/
+/**创建一个水平方向、子控件从左到右布局的栈*/
 +(ATHorStackView *)getStackHor;
 
 /**创建一个水平方向、子控件居中布局的栈*/
