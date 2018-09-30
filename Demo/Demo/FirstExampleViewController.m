@@ -38,12 +38,11 @@
     ATVerStackView *stack = [ATVerStackView getStackVer];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
-    view1.frame = CGRectMake(0, 0, 100, 0);
     view1.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view1 height:30 isFill:true];
+    [stack addArrangedSubview:view1 height:30 isFill:false];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view2 height:40 isFill:true];
+    [stack addArrangedSubview:view2 height:40 isFill:false];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
     [stack addArrangedSubview:view3 height:50 isFill:true];

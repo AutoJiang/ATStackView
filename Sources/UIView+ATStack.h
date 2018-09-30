@@ -51,8 +51,15 @@
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
 //隐藏元素，但是不改变其他元素的位置
--(void)setHiddenWithoutLayout:(BOOL)hidden;
+-(void)setAt_hidden:(BOOL)hidden;
 
--(BOOL)hiddenWithoutLayout;
+-(BOOL)at_hidden;
 
+-(void)setAt_width:(CGFloat)witdh;
+
+-(CGFloat)at_width;
+
+-(void)setAt_height:(CGFloat)height;
+
+-(CGFloat)at_height;
 @end

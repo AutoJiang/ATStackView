@@ -9,8 +9,10 @@
 #import "UIView+ATStack.h"
 #import <objc/runtime.h>
 
-#define kHiddenWithoutLayout @"hiddenWithoutLayout"
-#define kLastAlpha @"lastAlpha"
+#define kATHidden @"kATHidden"
+#define kLastAlpha @"kLastAlpha"
+#define kATWidth @"kATWidth"
+#define kATHeight @"kATHeight"
 
 @implementation UIView(Stack)
 
@@ -169,12 +171,12 @@
 
 
 #pragma mark - about hiddenWithoutLayout
--(void)setHiddenWithoutLayout:(BOOL)hidden{
-    NSNumber *value = objc_getAssociatedObject(self, kHiddenWithoutLayout);
+-(void)setAt_hidden:(BOOL)hidden{
+    NSNumber *value = objc_getAssociatedObject(self, kATHidden);
     if ([value boolValue] == hidden) {
         return;
     }
-    objc_setAssociatedObject(self, kHiddenWithoutLayout, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kATHidden, @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if (hidden) {
         objc_setAssociatedObject(self, kLastAlpha, @(self.alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         self.alpha = 0;
@@ -186,8 +188,44 @@
     }
 }
 
--(BOOL)hiddenWithoutLayout{
-    NSNumber *value = objc_getAssociatedObject(self, kHiddenWithoutLayout);
+-(BOOL)at_hidden{
+    NSNumber *value = objc_getAssociatedObject(self, kATHidden);
     return [value boolValue];
+}
+
+-(void)setAt_width:(CGFloat)width{
+    self.translatesAutoresizingMaskIntoConstraints = false;
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                        attribute:NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1.0
+                                                                         constant:width];
+    [self addConstraint:widthConstraint];
+    objc_setAssociatedObject(self, kATWidth, @(width), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(void)setAt_height:(CGFloat)height{
+    self.translatesAutoresizingMaskIntoConstraints = false;
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                        attribute:NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1.0
+                                                                         constant:height];
+    [self addConstraint:heightConstraint];
+    objc_setAssociatedObject(self, kATHeight, @(height), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(CGFloat)at_width{
+    NSNumber *width = objc_getAssociatedObject(self, kATWidth);
+    return [width doubleValue];
+}
+
+-(CGFloat)at_height{
+    NSNumber *height = objc_getAssociatedObject(self, kATHeight);
+    return [height doubleValue];
 }
 @end
