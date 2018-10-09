@@ -40,6 +40,7 @@
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
     [stack addArrangedSubview:view1 height:30 isFill:true];
+    [stack addSpacing:30];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
     [stack addArrangedSubview:view2 height:40 isFill:true];

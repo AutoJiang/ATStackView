@@ -43,12 +43,12 @@
     [stack addArrangedSubview:[self createCellWithTitle:@"小程序" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];;
 }
 
--(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)ImageName isLast:(BOOL)isLast{
+-(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
     control.backgroundColor = [UIColor whiteColor];
     ATHorStackView *stack = [control addStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
     stack.spacing = 10;
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:ImageName]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     [stack addArrangedSubview:imageView];
     UILabel *label = [UILabel new];
     label.text = title;

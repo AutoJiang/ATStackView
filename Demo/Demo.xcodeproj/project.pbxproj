@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91552A5216AFD3B002ACC7F /* ATStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C915529D216AFD3B002ACC7F /* ATStackView.m */; };
+		C91552A6216AFD3B002ACC7F /* ATHorStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C915529E216AFD3B002ACC7F /* ATHorStackView.m */; };
+		C91552A7216AFD3B002ACC7F /* UIView+ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C91552A1216AFD3B002ACC7F /* UIView+ATStack.m */; };
+		C91552A8216AFD3B002ACC7F /* ATVerStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C91552A4216AFD3B002ACC7F /* ATVerStackView.m */; };
 		C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DB215F45A50024ADB2 /* AppDelegate.m */; };
 		C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DE215F45A50024ADB2 /* ViewController.m */; };
 		C998B6E2215F45A50024ADB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C998B6E0215F45A50024ADB2 /* Main.storyboard */; };
@@ -15,10 +19,6 @@
 		C998B6EA215F45A50024ADB2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6E9215F45A50024ADB2 /* main.m */; };
 		C998B6F4215F45A50024ADB2 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6F3215F45A50024ADB2 /* DemoTests.m */; };
 		C998B6FF215F45A50024ADB2 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6FE215F45A50024ADB2 /* DemoUITests.m */; };
-		C998B717215F462B0024ADB2 /* ATStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B70F215F462B0024ADB2 /* ATStackView.m */; };
-		C998B718215F462B0024ADB2 /* ATHorStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B710215F462B0024ADB2 /* ATHorStackView.m */; };
-		C998B719215F462B0024ADB2 /* UIView+ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B713215F462B0024ADB2 /* UIView+ATStack.m */; };
-		C998B71A215F462B0024ADB2 /* ATVerStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B716215F462B0024ADB2 /* ATVerStackView.m */; };
 		C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B71C215F49BD0024ADB2 /* FirstExampleViewController.m */; };
 		C998B741215F694C0024ADB2 /* SecondExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B740215F694C0024ADB2 /* SecondExampleViewController.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C915529D216AFD3B002ACC7F /* ATStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATStackView.m; path = ../../Sources/ATStackView.m; sourceTree = "<group>"; };
+		C915529E216AFD3B002ACC7F /* ATHorStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATHorStackView.m; path = ../../Sources/ATHorStackView.m; sourceTree = "<group>"; };
+		C915529F216AFD3B002ACC7F /* ATHorStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATHorStackView.h; path = ../../Sources/ATHorStackView.h; sourceTree = "<group>"; };
+		C91552A0216AFD3B002ACC7F /* UIView+ATStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+ATStack.h"; path = "../../Sources/UIView+ATStack.h"; sourceTree = "<group>"; };
+		C91552A1216AFD3B002ACC7F /* UIView+ATStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+ATStack.m"; path = "../../Sources/UIView+ATStack.m"; sourceTree = "<group>"; };
+		C91552A2216AFD3B002ACC7F /* ATStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATStackView.h; path = ../../Sources/ATStackView.h; sourceTree = "<group>"; };
+		C91552A3216AFD3B002ACC7F /* ATVerStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATVerStackView.h; path = ../../Sources/ATVerStackView.h; sourceTree = "<group>"; };
+		C91552A4216AFD3B002ACC7F /* ATVerStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATVerStackView.m; path = ../../Sources/ATVerStackView.m; sourceTree = "<group>"; };
 		C998B6D7215F45A50024ADB2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C998B6DA215F45A50024ADB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C998B6DB215F45A50024ADB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,14 +65,6 @@
 		C998B6FA215F45A50024ADB2 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C998B6FE215F45A50024ADB2 /* DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoUITests.m; sourceTree = "<group>"; };
 		C998B700215F45A50024ADB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C998B70F215F462B0024ADB2 /* ATStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATStackView.m; path = ../../Sources/ATStackView.m; sourceTree = "<group>"; };
-		C998B710215F462B0024ADB2 /* ATHorStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATHorStackView.m; path = ../../Sources/ATHorStackView.m; sourceTree = "<group>"; };
-		C998B711215F462B0024ADB2 /* ATHorStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATHorStackView.h; path = ../../Sources/ATHorStackView.h; sourceTree = "<group>"; };
-		C998B712215F462B0024ADB2 /* UIView+ATStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+ATStack.h"; path = "../../Sources/UIView+ATStack.h"; sourceTree = "<group>"; };
-		C998B713215F462B0024ADB2 /* UIView+ATStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+ATStack.m"; path = "../../Sources/UIView+ATStack.m"; sourceTree = "<group>"; };
-		C998B714215F462B0024ADB2 /* ATStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATStackView.h; path = ../../Sources/ATStackView.h; sourceTree = "<group>"; };
-		C998B715215F462B0024ADB2 /* ATVerStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATVerStackView.h; path = ../../Sources/ATVerStackView.h; sourceTree = "<group>"; };
-		C998B716215F462B0024ADB2 /* ATVerStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATVerStackView.m; path = ../../Sources/ATVerStackView.m; sourceTree = "<group>"; };
 		C998B71B215F49BD0024ADB2 /* FirstExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstExampleViewController.h; sourceTree = "<group>"; };
 		C998B71C215F49BD0024ADB2 /* FirstExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstExampleViewController.m; sourceTree = "<group>"; };
 		C998B73F215F694C0024ADB2 /* SecondExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondExampleViewController.h; sourceTree = "<group>"; };
@@ -96,11 +96,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C915529C216AFD03002ACC7F /* ATStackView */ = {
+			isa = PBXGroup;
+			children = (
+				C915529F216AFD3B002ACC7F /* ATHorStackView.h */,
+				C915529E216AFD3B002ACC7F /* ATHorStackView.m */,
+				C91552A2216AFD3B002ACC7F /* ATStackView.h */,
+				C915529D216AFD3B002ACC7F /* ATStackView.m */,
+				C91552A3216AFD3B002ACC7F /* ATVerStackView.h */,
+				C91552A4216AFD3B002ACC7F /* ATVerStackView.m */,
+				C91552A0216AFD3B002ACC7F /* UIView+ATStack.h */,
+				C91552A1216AFD3B002ACC7F /* UIView+ATStack.m */,
+			);
+			path = ATStackView;
+			sourceTree = "<group>";
+		};
 		C998B6CE215F45A50024ADB2 = {
 			isa = PBXGroup;
 			children = (
 				C998B6D9215F45A50024ADB2 /* Demo */,
-				C998B70C215F45C70024ADB2 /* ATStackView */,
+				C915529C216AFD03002ACC7F /* ATStackView */,
 				C998B6F2215F45A50024ADB2 /* DemoTests */,
 				C998B6FD215F45A50024ADB2 /* DemoUITests */,
 				C998B6D8215F45A50024ADB2 /* Products */,
@@ -153,21 +168,6 @@
 				C998B700215F45A50024ADB2 /* Info.plist */,
 			);
 			path = DemoUITests;
-			sourceTree = "<group>";
-		};
-		C998B70C215F45C70024ADB2 /* ATStackView */ = {
-			isa = PBXGroup;
-			children = (
-				C998B711215F462B0024ADB2 /* ATHorStackView.h */,
-				C998B710215F462B0024ADB2 /* ATHorStackView.m */,
-				C998B714215F462B0024ADB2 /* ATStackView.h */,
-				C998B70F215F462B0024ADB2 /* ATStackView.m */,
-				C998B715215F462B0024ADB2 /* ATVerStackView.h */,
-				C998B716215F462B0024ADB2 /* ATVerStackView.m */,
-				C998B712215F462B0024ADB2 /* UIView+ATStack.h */,
-				C998B713215F462B0024ADB2 /* UIView+ATStack.m */,
-			);
-			path = ATStackView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,13 +303,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C998B71A215F462B0024ADB2 /* ATVerStackView.m in Sources */,
+				C91552A5216AFD3B002ACC7F /* ATStackView.m in Sources */,
 				C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */,
+				C91552A7216AFD3B002ACC7F /* UIView+ATStack.m in Sources */,
 				C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */,
 				C998B6EA215F45A50024ADB2 /* main.m in Sources */,
-				C998B719215F462B0024ADB2 /* UIView+ATStack.m in Sources */,
-				C998B717215F462B0024ADB2 /* ATStackView.m in Sources */,
-				C998B718215F462B0024ADB2 /* ATHorStackView.m in Sources */,
+				C91552A8216AFD3B002ACC7F /* ATVerStackView.m in Sources */,
+				C91552A6216AFD3B002ACC7F /* ATHorStackView.m in Sources */,
 				C998B741215F694C0024ADB2 /* SecondExampleViewController.m in Sources */,
 				C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */,
 			);

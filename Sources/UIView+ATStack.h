@@ -14,7 +14,7 @@
 
 //快速为view添加一个StackView，返回ATVerStackView
 
-/**快速创建一个水平方向、子控件从上到下布局的栈*/
+/**快速创建一个垂直方向、子控件从上到下布局的栈*/
 -(ATVerStackView *)addStackVer;
 
 /**快速创建一个水平方向、子控件从左到右布局的栈*/

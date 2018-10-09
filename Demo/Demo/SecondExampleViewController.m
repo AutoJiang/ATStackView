@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     ATVerStackView *stack = [self.view addStackVerCenter];
     stack.spacing = 20;
     for (int i = 0; i < 3; i++) {
@@ -30,7 +29,6 @@
         }
         [stack addArrangedSubview:view height:60 isFill:true];
     }
-    
 }
 
 @end
