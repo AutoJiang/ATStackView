@@ -16,10 +16,6 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 
 -(ATStack*)stack{
     ATStack *stack = objc_getAssociatedObject(self, kATStackAssociatedKey);
-    if(!stack){
-        stack = [[ATStack alloc] initWithView: self];
-        objc_setAssociatedObject(self, kATStackAssociatedKey, stack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
     return stack;
 }
 
@@ -38,9 +34,10 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 
 
 -(ATVerStack *)addStackVer{
-    ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
-    return stack;
+    return [[ATVerStack alloc] initWithView:self];
 }
 
-
+-(ATHorStack *)addStackHor{
+    return [[ATHorStack alloc] initWithView:self];
+}
 @end

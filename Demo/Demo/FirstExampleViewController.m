@@ -64,7 +64,46 @@
     label3.backgroundColor = RandomColor;
     //label3 设置高度，isFill = false，高度自定义，宽度自适应"
     [stack addArrangedSubview:label3 height:50 isFill:false];
+    [stack addArrangedSubview:[self getRowView] height:300 isFill:true];
+    
     [stack layoutFrame];
+}
+
+-(UIView*)getRowView{
+    UIView *rowView = [UIView new];
+    rowView.backgroundColor = [UIColor redColor];
+    ATHorStack *stack = [rowView addStackHor];
+    UIView *view1 = [UIView new];
+    view1.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view1 width:50 isFill:true];
+    [stack addSpacing:30];
+    UIView *view2 = [UIView new];
+    view2.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view2 width:60 isFill:true];
+    UIView *view3 = [UIView new];
+    view3.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view3 width:50 isFill:true];
+    UILabel *label1 = [UILabel new];
+    label1.text = @"label1 ";
+    label1.textColor = RandomColor;
+    label1.backgroundColor = RandomColor;
+    //不设置高度,isFill = false。自适应大小
+    [stack addArrangedSubview:label1];
+    UILabel *label2 = [UILabel new];
+    label2.text = @"label2";
+    label2.textColor = RandomColor;
+    label2.backgroundColor = RandomColor;
+    label2.textAlignment = NSTextAlignmentCenter;
+    //label2 不设置高度,isFill = true， 宽度拉伸填满"
+    [stack addArrangedSubview:label2 isFill:true];
+    UILabel *label3 = [UILabel new];
+    label3.text = @"label3";
+    label3.textColor = RandomColor;
+    label3.backgroundColor = RandomColor;
+    //label3 设置高度，isFill = false，高度自定义，宽度自适应"
+    [stack addArrangedSubview:label3 width:50 isFill:false];
+    
+    return rowView;
 }
 
 //-(ATVerStack*)createExampleStackView{

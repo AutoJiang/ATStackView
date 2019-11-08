@@ -79,6 +79,8 @@
         v.frame = CGRectMake(x, y, w, h);
         [self.view addSubview:v];
         y += self.spacing + h + v.info.space;
+        NSLog(@"%@", NSStringFromClass([v.stack class]));
+        [v.stack layoutFrame];
     }
 }
 @end

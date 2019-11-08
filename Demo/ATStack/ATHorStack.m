@@ -7,16 +7,65 @@
 //
 
 #import "ATHorStack.h"
+#import "UIView+ATStack2.h"
 
 @implementation ATHorStack
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
+- (instancetype)initWithView:(UIView *)view{
+    self = [super initWithView:view];
+    if(self){
+        self.axis = UILayoutConstraintAxisHorizontal;
+        self.alignment = UIStackViewAlignmentCenter;
+        self.distribution = UIStackViewDistributionFill;
     }
     return self;
+}
+
+-(void)addArrangedSubview:(UIView*)view width:(CGFloat)width{
+    [self addArrangedSubview:view width:width isFill:false position:ATStackViewPositionHead];
+}
+
+
+-(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill{
+    [self addArrangedSubview:view width:width isFill:isFill position:ATStackViewPositionHead];
+}
+
+-(void)addArrangedSubview:(UIView*)view isFill:(BOOL)isFill{
+    [self addArrangedSubview:view width:0 isFill:isFill position:ATStackViewPositionHead];
+}
+
+-(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill position:(ATStackViewPosition)position{
+    [self.arrangedSubviews addObject:view];
+    view.info.width = width;
+    view.info.isFill = isFill;
+}
+
+-(void)layoutFrame{
+    CGFloat height = self.view.frame.size.height;
+    CGFloat x = 0;
+    for (int i = 0; i < self.arrangedSubviews.count; i++) {
+        UIView *v = self.arrangedSubviews[i];
+        [v sizeToFit];
+        CGFloat h = v.frame.size.height;
+        CGFloat y = 0;
+        CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
+        if(v.info.isFill){
+            y = 0;
+            h = height;
+        }else{
+            if (self.alignment == UIStackViewAlignmentLeading) {
+                y = 0;
+            }else if(self.alignment == UIStackViewAlignmentCenter){
+                y = (height - h) / 2.0;
+            }else if (self.alignment == UIStackViewAlignmentTrailing){
+                y = height - h;
+            }
+        }
+        v.frame = CGRectMake(x, y, w, h);
+        [self.view addSubview:v];
+        x += self.spacing + w + v.info.space;
+        [v.stack layoutFrame];
+    }
 }
 
 @end

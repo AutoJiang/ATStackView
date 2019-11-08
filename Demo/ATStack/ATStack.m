@@ -7,6 +7,7 @@
 //
 
 #import "ATStack.h"
+#import "UIView+ATStack2.h"
 
 @interface ATStack()
 
@@ -20,6 +21,7 @@
     if (self) {
         self.view = view;
         self.arrangedSubviews = [[NSMutableArray alloc] init];
+        view.stack = self;
     }
     return self;
 }
@@ -32,6 +34,22 @@
     [self.arrangedSubviews addObject:view];
 }
 
+-(void)addSpacing:(CGFloat)spacing{
+    [self addSpacing:spacing postion:ATStackViewPositionHead];
+}
 
+-(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion{
+    if(postion == ATStackViewPositionHead){
+        UIView *v = [self.arrangedSubviews lastObject];
+        if(v){
+            v.info.space = spacing;
+        }
+    }
+    
+}
+
+-(void)layoutFrame{
+    
+}
 
 @end

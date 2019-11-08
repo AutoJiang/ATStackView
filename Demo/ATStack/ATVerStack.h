@@ -29,12 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)addArrangedSubview:(UIView*)view height:(CGFloat)height isFill:(BOOL)isFill position:(ATStackViewPosition)position;
 
--(void)addSpacing:(CGFloat)spacing;
-
--(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion;
-
--(void)layoutFrame;
-
 @end
 
 NS_ASSUME_NONNULL_END

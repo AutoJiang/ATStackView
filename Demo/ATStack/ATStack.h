@@ -11,29 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//typedef enum ATStackConstraintAxis : NSInteger {
-//    ATStackConstraintAxisHorizontal = 0,
-//    ATStackConstraintAxisVertical = 1
-//} ATStackConstraintAxis;
-//
-//typedef enum ATStackAlignment : NSInteger {
-//    ATStackAlignmentFill = 0,
-//    ATStackAlignmentLeading,
-//    ATStackAlignmentTop,
-//    ATStackAlignmentFirstBaseline,
-//    ATStackAlignmentCenter,
-//    ATStackAlignmentTrailing,
-//    ATStackAlignmentBottom,
-//    ATStackAlignmentLastBaseline,
-//} ATStackAlignment;
-//
-//typedef enum ATStackDistribution : NSInteger {
-//    ATStackDistributionFill = 0,
-//    ATStackDistributionFillEqually,
-//    ATStackDistributionFillProportionally,
-//    ATStackDistributionEqualSpacing,
-//    ATStackDistributionEqualCentering,
-//} ATStackDistribution;
 
 typedef enum ATStackViewPosition: NSUInteger {
 /**从头部添加元素*/
@@ -63,6 +40,10 @@ typedef enum ATStackViewPosition: NSUInteger {
 -(void)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position;
 
 - (instancetype)initWithView:(UIView*)view;
+
+-(void)addSpacing:(CGFloat)spacing;
+
+-(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion;
 
 -(void)layoutFrame;
 

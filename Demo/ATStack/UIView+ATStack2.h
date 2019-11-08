@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(CGFloat)at_height;
 
-@property (nonatomic, readonly, strong) ATStack *stack;
+@property (nonatomic, strong) ATStack *stack;
 
 @property (nonatomic, readonly, strong) ATStackInfo *info;
 

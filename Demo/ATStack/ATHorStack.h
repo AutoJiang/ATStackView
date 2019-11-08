@@ -23,15 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)addArrangedSubview:(UIView*)view width:(CGFloat)width;
 
--(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(Boolean)isFill;
+-(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill;
 
--(void)addArrangedSubview:(UIView*)view isFill:(Boolean)isFill;
+-(void)addArrangedSubview:(UIView*)view isFill:(BOOL)isFill;
 
 -(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill position:(ATStackViewPosition)position;
-
--(void)addSpacing:(CGFloat)spacing;
-
--(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion;
 
 @end
 
