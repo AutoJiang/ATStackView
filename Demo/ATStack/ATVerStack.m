@@ -48,7 +48,10 @@
 
 -(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion{
     if(postion == ATStackViewPositionHead){
-        
+        UIView *v = [self.arrangedSubviews lastObject];
+        if(v){
+            v.info.space = spacing;
+        }
     }
 }
 
@@ -73,10 +76,9 @@
                 x = width - w;
             }
         }
-        y += v.info.space;
         v.frame = CGRectMake(x, y, w, h);
         [self.view addSubview:v];
-        y += self.spacing + h;
+        y += self.spacing + h + v.info.space;
     }
 }
 @end
