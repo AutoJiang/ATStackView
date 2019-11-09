@@ -47,10 +47,23 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     stack.alignment = UIStackViewAlignmentFill;
     return stack;
 }
+
+-(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
+    return [self addStackHorEqual];
+}
+
 -(ATVerStack *)addStackVerEqual{
     ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
     stack.distribution = UIStackViewDistributionFillEqually;
     stack.alignment = UIStackViewAlignmentFill;
     return stack;
 }
+
+-(ATVerStack *)addStackVerCenter{
+    ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
+    stack.distribution = UIStackViewDistributionFill;
+    stack.alignment = UIStackViewAlignmentCenter;
+    return stack;
+}
+
 @end

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C961E7FF2370620A00626CAB /* ATVerStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E7F72370620A00626CAB /* ATVerStackView.m */; };
-		C961E8002370620A00626CAB /* ATHorStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E7F92370620A00626CAB /* ATHorStackView.m */; };
-		C961E8012370620A00626CAB /* ATStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E7FB2370620A00626CAB /* ATStackView.m */; };
 		C961E8062370748A00626CAB /* ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8052370748A00626CAB /* ATStack.m */; };
 		C961E809237076F700626CAB /* UIView+ATStack2.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E808237076F700626CAB /* UIView+ATStack2.m */; };
 		C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E80B2371C7E300626CAB /* ATHorStack.m */; };
@@ -338,14 +335,11 @@
 				C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */,
 				C961E8062370748A00626CAB /* ATStack.m in Sources */,
 				C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */,
-				C961E7FF2370620A00626CAB /* ATVerStackView.m in Sources */,
 				C998B6EA215F45A50024ADB2 /* main.m in Sources */,
 				C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */,
 				C961E809237076F700626CAB /* UIView+ATStack2.m in Sources */,
-				C961E8002370620A00626CAB /* ATHorStackView.m in Sources */,
 				C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */,
 				C998B741215F694C0024ADB2 /* SecondExampleViewController.m in Sources */,
-				C961E8012370620A00626CAB /* ATStackView.m in Sources */,
 				C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */,
 				C961E8122371D4EF00626CAB /* ATVerStack.m in Sources */,
 			);
