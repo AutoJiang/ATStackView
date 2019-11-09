@@ -45,7 +45,13 @@
             v.info.space = spacing;
         }
     }
-    
+}
+
+-(void)setAlignment:(UIStackViewAlignment)alignment{
+    if(_alignment != alignment){
+        _alignment = alignment;
+        [self layoutFrame];
+    }
 }
 
 -(void)layoutFrame{

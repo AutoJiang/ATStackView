@@ -40,4 +40,11 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 -(ATHorStack *)addStackHor{
     return [[ATHorStack alloc] initWithView:self];
 }
+
+-(ATHorStack*)addStackHorEqual{
+    ATHorStack *stack = [[ATHorStack alloc] initWithView:self];
+    stack.distribution = UIStackViewDistributionFillEqually;
+    stack.alignment = UIStackViewAlignmentFill;
+    return stack;
+}
 @end
