@@ -56,6 +56,18 @@
 }
 
 -(void)layoutFrame{
+    if(self.arrangedSubviews.count <= 0){
+        return;
+    }
+    if (self.distribution == UIStackViewDistributionFill) {
+        [self layoutDistributionFrame];
+    }else if (self.distribution == UIStackViewDistributionFillEqually){
+        [self layoutEqualFrame];
+    }
+}
+
+
+-(void)layoutDistributionFrame{
     CGFloat width = self.view.frame.size.width;
     CGFloat y = 0;
     for (int i = 0; i < self.arrangedSubviews.count; i++) {
@@ -79,8 +91,38 @@
         v.frame = CGRectMake(x, y, w, h);
         [self.view addSubview:v];
         y += self.spacing + h + v.info.space;
-        NSLog(@"%@", NSStringFromClass([v.stack class]));
         [v.stack layoutFrame];
     }
 }
+
+-(void)layoutEqualFrame{
+    long count = self.arrangedSubviews.count;
+    CGFloat width = self.view.frame.size.width;
+    CGFloat y = 0;
+    CGFloat spaceSum = (count - 1)*self.spacing;
+    CGFloat h =  (self.view.frame.size.height - spaceSum)/count;
+    for (int i = 0; i < self.arrangedSubviews.count; i++) {
+        UIView *v = self.arrangedSubviews[i];
+        [v sizeToFit];
+        CGFloat w = v.frame.size.width;
+        CGFloat x = 0;
+        if(v.info.isFill){
+            x = 0;
+            w = width;
+        }else{
+            if (self.alignment == UIStackViewAlignmentLeading) {
+                x = 0;
+            }else if(self.alignment == UIStackViewAlignmentCenter){
+                x = (width - w) / 2.0;
+            }else if (self.alignment == UIStackViewAlignmentTrailing){
+                x = width - w;
+            }
+        }
+        v.frame = CGRectMake(x, y, w, h);
+        [self.view addSubview:v];
+        y += self.spacing + h;
+        [v.stack layoutFrame];
+    }
+}
+
 @end

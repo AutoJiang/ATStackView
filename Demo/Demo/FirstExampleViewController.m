@@ -65,8 +65,8 @@
     label3.backgroundColor = RandomColor;
     //label3 设置高度，isFill = false，高度自定义，宽度自适应"
     [stack addArrangedSubview:label3 height:50 isFill:false];
-    [stack addArrangedSubview:[self getRowView] height:300 isFill:true];
-    
+    [stack addArrangedSubview:[self getRowView] height:80 isFill:true];
+    [stack addArrangedSubview:[self getEqualVerView] height:120 isFill:true];
     [stack addArrangedSubview:[self createControlsView] height:40 isFill:true];
     
     [stack layoutFrame];
@@ -171,6 +171,23 @@
     [button3 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
     [stack addArrangedSubview:button3];
     button3.tag = UIStackViewAlignmentTrailing;
+    return view;
+}
+
+-(UIView*)getEqualVerView{
+    UIView *view = [UIView new];
+    ATVerStack *stack = [view addStackVerEqual];
+    stack.spacing = 10;
+    UIView *view1 = [UIView new];
+    view1.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view1 height:50 isFill:true];
+    [stack addSpacing:30];
+    UIView *view2 = [UIView new];
+    view2.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view2 height:60 isFill:true];
+    UIView *view3 = [UIView new];
+    view3.backgroundColor = RandomColor;
+    [stack addArrangedSubview:view3 height:50 isFill:true];
     return view;
 }
 

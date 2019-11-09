@@ -41,6 +41,9 @@
 }
 
 -(void)layoutFrame{
+    if(self.arrangedSubviews.count <= 0){
+        return;
+    }
     if (self.distribution == UIStackViewDistributionFill) {
         [self layoutDistributionFrame];
     }else if (self.distribution == UIStackViewDistributionFillEqually){
@@ -78,9 +81,6 @@
 
 -(void)layoutEqualFrame{
     long count = self.arrangedSubviews.count;
-    if(count <= 0){
-        return;
-    }
     CGFloat height = self.view.frame.size.height;
     CGFloat x = 0;
     CGFloat spaceSum = (count - 1)*self.spacing;

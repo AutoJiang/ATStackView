@@ -47,4 +47,10 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     stack.alignment = UIStackViewAlignmentFill;
     return stack;
 }
+-(ATVerStack *)addStackVerEqual{
+    ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
+    stack.distribution = UIStackViewDistributionFillEqually;
+    stack.alignment = UIStackViewAlignmentFill;
+    return stack;
+}
 @end
