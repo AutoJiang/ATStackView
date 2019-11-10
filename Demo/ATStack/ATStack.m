@@ -20,9 +20,9 @@
     self = [super init];
     if (self) {
         self.view = view;
-        self.arrangedSubviewsHead = [[NSMutableArray alloc] init];
-        self.arrangedSubviewsCenter = [[NSMutableArray alloc] init];
-        self.arrangedSubviewsTail = [[NSMutableArray alloc] init];
+        self->arrangedSubviewsHead = [[NSMutableArray alloc] init];
+        self->arrangedSubviewsCenter = [[NSMutableArray alloc] init];
+        self->arrangedSubviewsTail = [[NSMutableArray alloc] init];
         view.stack = self;
     }
     return self;
@@ -31,13 +31,13 @@
 -(void)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position{
     switch (position) {
         case ATStackViewPositionHead:
-            [self.arrangedSubviewsHead addObject:view];
+            [self->arrangedSubviewsHead addObject:view];
             break;
         case ATStackViewPositionCenter:
-            [self.arrangedSubviewsCenter addObject:view];
+            [self->arrangedSubviewsCenter addObject:view];
             break;
         case ATStackViewPositionTail:
-            [self.arrangedSubviewsTail addObject:view];
+            [self->arrangedSubviewsTail addObject:view];
             break;
         default:
             break;
@@ -55,11 +55,11 @@
 -(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion{
     UIView *v;
     if(postion == ATStackViewPositionHead){
-        v = [self.arrangedSubviewsHead lastObject];
+        v = [self->arrangedSubviewsHead lastObject];
     }else if(postion == ATStackViewPositionCenter){
-        v = [self.arrangedSubviewsCenter lastObject];
+        v = [self->arrangedSubviewsCenter lastObject];
     }else if(postion == ATStackViewPositionTail){
-        v = [self.arrangedSubviewsTail lastObject];
+        v = [self->arrangedSubviewsTail lastObject];
     }
     if(v){
         v.info.space = spacing;
@@ -74,17 +74,17 @@
 }
 
 -(void)layoutFrame{
-    if(self.arrangedSubviewsHead.count <= 0 && self.arrangedSubviewsCenter.count <= 0 && self.arrangedSubviewsTail.count <= 0){
+    if(self->arrangedSubviewsHead.count <= 0 && self->arrangedSubviewsCenter.count <= 0 && self->arrangedSubviewsTail.count <= 0){
         return;
     }
     if (self.distribution == ATStackDistributionFill) {
-        if(self.arrangedSubviewsHead.count > 0){
+        if(self->arrangedSubviewsHead.count > 0){
             [self layoutHeadFrames];
         }
-        if(self.arrangedSubviewsCenter.count > 0){
+        if(self->arrangedSubviewsCenter.count > 0){
             [self layoutCenterFrames];
         }
-        if(self.arrangedSubviewsTail.count > 0){
+        if(self->arrangedSubviewsTail.count > 0){
             [self layoutTailFrames];
         }
     }else if (self.distribution == ATStackDistributionFillEqually){

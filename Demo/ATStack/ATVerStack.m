@@ -74,20 +74,20 @@
 }
 
 -(void)layoutHeadFrames{
-    [self layoutCommonFrames:self.arrangedSubviewsHead];
+    [self layoutCommonFrames:self->arrangedSubviewsHead];
 }
 
 -(void)layoutCenterFrames{
-    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsCenter];
+    CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
     CGFloat y = (self.view.frame.size.height - length)/2;
-    [self moveY:y arrangedSubviews:self.arrangedSubviewsCenter];
+    [self moveY:y arrangedSubviews:self->arrangedSubviewsCenter];
     
 }
 
 -(void)layoutTailFrames{
-    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsTail];
+    CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
     CGFloat y = self.view.frame.size.height - length;
-    [self moveY:y arrangedSubviews:self.arrangedSubviewsTail];
+    [self moveY:y arrangedSubviews:self->arrangedSubviewsTail];
 }
 
 -(void)moveY:(CGFloat)y arrangedSubviews:(NSMutableArray* )arrangedSubviews{
@@ -97,13 +97,13 @@
 }
 
 -(void)layoutEqualFrame{
-    long count = self.arrangedSubviewsHead.count;
+    long count = self->arrangedSubviewsHead.count;
     CGFloat width = self.view.frame.size.width;
     CGFloat y = 0;
     CGFloat spaceSum = (count - 1)*self.spacing;
     CGFloat h =  (self.view.frame.size.height - spaceSum)/count;
-    for (int i = 0; i < self.arrangedSubviewsHead.count; i++) {
-        UIView *v = self.arrangedSubviewsHead[i];
+    for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
+        UIView *v = self->arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
         CGFloat x = 0;

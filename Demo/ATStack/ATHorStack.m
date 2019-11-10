@@ -12,7 +12,6 @@
 
 @implementation ATHorStack
 
-//@synthesize axis = _axis
 
 - (instancetype)initWithView:(UIView *)view{
     self = [super initWithView:view];
@@ -73,19 +72,19 @@
 }
 
 -(void)layoutHeadFrames{
-    [self layoutCommonFrames:self.arrangedSubviewsHead];
+    [self layoutCommonFrames:self->arrangedSubviewsHead];
 }
 
 -(void)layoutCenterFrames{
-    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsCenter];
+    CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
     CGFloat x = (self.view.frame.size.width - length)/2;
-    [self moveX:x arrangedSubviews:self.arrangedSubviewsCenter];
+    [self moveX:x arrangedSubviews:self->arrangedSubviewsCenter];
 }
 
 -(void)layoutTailFrames{
-    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsTail];
+    CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
     CGFloat x = self.view.frame.size.width - length;
-    [self moveX:x arrangedSubviews:self.arrangedSubviewsCenter];
+    [self moveX:x arrangedSubviews:self->arrangedSubviewsCenter];
 }
 
 -(void)moveX:(CGFloat)x arrangedSubviews:(NSMutableArray* )arrangedSubviews{
@@ -96,14 +95,14 @@
 
 
 -(void)layoutEqualFrame{
-    long count = self.arrangedSubviewsHead.count;
+    long count = self->arrangedSubviewsHead.count;
     CGFloat height = self.view.frame.size.height;
     CGFloat x = 0;
     CGFloat spaceSum = (count - 1)*self.spacing;
     CGFloat w =  (self.view.frame.size.width - spaceSum)/count;
     
-    for (int i = 0; i < self.arrangedSubviewsHead.count; i++) {
-        UIView *v = self.arrangedSubviewsHead[i];
+    for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
+        UIView *v = self->arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat h = v.frame.size.height;
         CGFloat y = 0;

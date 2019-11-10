@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum ATStackConstraintAxis : NSInteger {
     ATStackConstraintAxisHorizontal = 0,
-    ATStackConstraintAxisVertical = 1
+    ATStackConstraintAxisVertical
 } ATStackConstraintAxis;
 
 typedef enum ATStackAlignment : NSInteger {
@@ -42,23 +42,21 @@ typedef enum ATStackViewPosition: NSUInteger {
 /**从头部添加元素*/
     ATStackViewPositionHead = 0,
 /**从中间添加元素*/
-    ATStackViewPositionCenter = 1,
+    ATStackViewPositionCenter,
 /**从尾部添加元素*/
-    ATStackViewPositionTail = 2,
+    ATStackViewPositionTail,
 } ATStackViewPosition;
 
 @interface ATStack: NSObject{
     @protected
-    
+    NSMutableArray *arrangedSubviewsHead;
+    @protected
+    NSMutableArray *arrangedSubviewsCenter;
+    @protected
+    NSMutableArray *arrangedSubviewsTail;
 }
 
 @property(nonatomic, weak) UIView *view;
-
-@property(nonatomic, readwrite, strong) NSMutableArray *arrangedSubviewsHead;
-
-@property(nonatomic, readwrite, strong) NSMutableArray *arrangedSubviewsCenter;
-
-@property(nonatomic, readwrite, strong) NSMutableArray *arrangedSubviewsTail;
 
 @property(nonatomic, readonly, assign) ATStackConstraintAxis axis;
 
