@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIView+ATStack.h"
+#import "UIView+ATStack2.h"
 
 @interface ViewController ()
 
@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ATVerStackView *stack = [self.view addStackVer];
+    ATVerStack *stack = [self.view addStackVer];
     [stack addSpacing:10];
     [stack addArrangedSubview:[self createCellWithTitle:@"朋友圈" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
     [stack addSpacing:14];
@@ -41,12 +41,13 @@
     [stack addArrangedSubview:[self createCellWithTitle:@"游戏" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
     [stack addSpacing:14];
     [stack addArrangedSubview:[self createCellWithTitle:@"小程序" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];;
+    [stack layoutFrame];
 }
 
 -(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
     control.backgroundColor = [UIColor whiteColor];
-    ATHorStackView *stack = [control addStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
+    ATHorStack *stack = [control addStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
     stack.spacing = 10;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     [stack addArrangedSubview:imageView];
@@ -58,7 +59,7 @@
     UIImageView *leftArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Chevron"]];
     [stack addArrangedSubview:leftArrow position:ATStackViewPositionTail];
     if (!isLast) {
-        [control addLineSeparateWithLelfPadding:10];
+//        [control addLineSeparateWithLelfPadding:10];
     }
     control.accessibilityIdentifier = title;
     [control addTarget:self action:@selector(cellOnclick:) forControlEvents:UIControlEventTouchUpInside];

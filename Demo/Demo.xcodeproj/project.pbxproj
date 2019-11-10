@@ -80,6 +80,7 @@
 		C998B71C215F49BD0024ADB2 /* FirstExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstExampleViewController.m; sourceTree = "<group>"; };
 		C998B73F215F694C0024ADB2 /* SecondExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondExampleViewController.h; sourceTree = "<group>"; };
 		C998B740215F694C0024ADB2 /* SecondExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondExampleViewController.m; sourceTree = "<group>"; };
+		C9E04F8B23785C10001F9AC0 /* ATStack+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATStack+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +136,7 @@
 				C961E808237076F700626CAB /* UIView+ATStack2.m */,
 				C961E8132372F99B00626CAB /* ATStackInfo.h */,
 				C961E8142372F99B00626CAB /* ATStackInfo.m */,
+				C9E04F8B23785C10001F9AC0 /* ATStack+Private.h */,
 			);
 			path = ATStack;
 			sourceTree = "<group>";

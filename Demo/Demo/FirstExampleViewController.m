@@ -67,8 +67,7 @@
     [stack addArrangedSubview:label3 height:50 isFill:false];
     [stack addArrangedSubview:[self getRowView] height:80 isFill:true];
     [stack addArrangedSubview:[self getEqualVerView] height:120 isFill:true];
-    [stack addArrangedSubview:[self createControlsView] height:40 isFill:true];
-    
+    [stack addArrangedSubview:[self createControlsView] height:150 isFill:true position:ATStackViewPositionTail]; 
     [stack layoutFrame];
     self.verStack = stack;
 }

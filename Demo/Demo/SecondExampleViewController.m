@@ -8,6 +8,7 @@
 
 #import "SecondExampleViewController.h"
 #import "UIView+ATStack2.h"
+
 @interface SecondExampleViewController ()
 
 @end
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ATVerStack *stack = [self.view addStackVerCenter];
+    ATVerStack *stack = [self.view addStackVer];
     stack.spacing = 20;
     for(int i = 0; i < 3; i++) {
         UIView *view = [UIView new];
@@ -28,8 +29,7 @@
             view.backgroundColor = [UIColor redColor];
             [horStack addArrangedSubview:view isFill:true];
         }
-//        [horStack layoutFrame];
-        [stack addArrangedSubview:view height:60 isFill:true];
+        [stack addArrangedSubview:view height:60 isFill:true position:ATStackViewPositionCenter];
     }
     [stack layoutFrame];
 }

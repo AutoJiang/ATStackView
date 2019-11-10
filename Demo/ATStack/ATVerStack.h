@@ -15,9 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**创建一个垂直方向、子控件从上到下布局的栈*/
 +(ATVerStack *)getStackVer;
 
-/**创建一个垂直方向、子控件居中布局的栈*/
-+(ATVerStack *)getStackVerCenter;
-
 /**创建一个垂直方向、子控件均分的栈*/
 +(ATVerStack *)getStackVerEqueal;
 

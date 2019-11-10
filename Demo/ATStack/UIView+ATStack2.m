@@ -7,6 +7,7 @@
 //
 
 #import "UIView+ATStack2.h"
+#import "ATStack+Private.h"
 #import <objc/runtime.h>
 
 static const void *kATStackAssociatedKey = &kATStackAssociatedKey;
@@ -32,7 +33,6 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return stack;
 }
 
-
 -(ATVerStack *)addStackVer{
     return [[ATVerStack alloc] initWithView:self];
 }
@@ -50,6 +50,10 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 
 -(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
     return [self addStackHorEqual];
+}
+
+-(ATHorStack *)addStackHorWithInset:(UIEdgeInsets)inset{
+    return [self addStackHor];
 }
 
 -(ATVerStack *)addStackVerEqual{

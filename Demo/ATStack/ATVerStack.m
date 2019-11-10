@@ -8,14 +8,16 @@
 
 #import "ATVerStack.h"
 #import "UIView+ATStack2.h"
+#import "ATStack+Private.h"
+
 @implementation ATVerStack
 
 - (instancetype)initWithView:(UIView *)view{
     self = [super initWithView:view];
     if(self){
-        self.axis = UILayoutConstraintAxisVertical;
-        self.alignment = UIStackViewAlignmentLeading;
-        self.distribution = UIStackViewDistributionFill;
+        [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisVertical] forKey:@"axis"];
+        self.alignment = ATStackAlignmentCenter;
+        self.distribution = ATStackDistributionFill;
     }
     return self;
 }
@@ -37,41 +39,16 @@
 }
 
 -(void)addArrangedSubview:(UIView *)view height:(CGFloat)height isFill:(BOOL)isFill position:(ATStackViewPosition)position{
-    [self.arrangedSubviews addObject:view];
+    [self addArrangedSubview:view position:position];
     view.info.height = height;
     view.info.isFill = isFill;
 }
 
--(void)addSpacing:(CGFloat)spacing{
-    [self addSpacing:spacing postion:ATStackViewPositionHead];
-}
-
--(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion{
-    if(postion == ATStackViewPositionHead){
-        UIView *v = [self.arrangedSubviews lastObject];
-        if(v){
-            v.info.space = spacing;
-        }
-    }
-}
-
--(void)layoutFrame{
-    if(self.arrangedSubviews.count <= 0){
-        return;
-    }
-    if (self.distribution == UIStackViewDistributionFill) {
-        [self layoutDistributionFrame];
-    }else if (self.distribution == UIStackViewDistributionFillEqually){
-        [self layoutEqualFrame];
-    }
-}
-
-
--(void)layoutDistributionFrame{
+-(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
     CGFloat width = self.view.frame.size.width;
     CGFloat y = 0;
-    for (int i = 0; i < self.arrangedSubviews.count; i++) {
-        UIView *v = self.arrangedSubviews[i];
+    for (int i = 0; i < arrangedSubviews.count; i++) {
+        UIView *v = arrangedSubviews[i];
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
         CGFloat x = 0;
@@ -93,16 +70,40 @@
         y += self.spacing + h + v.info.space;
         [v.stack layoutFrame];
     }
+    return y;
+}
+
+-(void)layoutHeadFrames{
+    [self layoutCommonFrames:self.arrangedSubviewsHead];
+}
+
+-(void)layoutCenterFrames{
+    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsCenter];
+    CGFloat y = (self.view.frame.size.height - length)/2;
+    [self moveY:y arrangedSubviews:self.arrangedSubviewsCenter];
+    
+}
+
+-(void)layoutTailFrames{
+    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsTail];
+    CGFloat y = self.view.frame.size.height - length;
+    [self moveY:y arrangedSubviews:self.arrangedSubviewsTail];
+}
+
+-(void)moveY:(CGFloat)y arrangedSubviews:(NSMutableArray* )arrangedSubviews{
+    for (UIView *v in arrangedSubviews) {
+        v.frame = CGRectMake(v.frame.origin.x, y, v.frame.size.width, v.frame.size.height);
+    }
 }
 
 -(void)layoutEqualFrame{
-    long count = self.arrangedSubviews.count;
+    long count = self.arrangedSubviewsHead.count;
     CGFloat width = self.view.frame.size.width;
     CGFloat y = 0;
     CGFloat spaceSum = (count - 1)*self.spacing;
     CGFloat h =  (self.view.frame.size.height - spaceSum)/count;
-    for (int i = 0; i < self.arrangedSubviews.count; i++) {
-        UIView *v = self.arrangedSubviews[i];
+    for (int i = 0; i < self.arrangedSubviewsHead.count; i++) {
+        UIView *v = self.arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
         CGFloat x = 0;

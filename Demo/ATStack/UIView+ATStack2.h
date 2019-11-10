@@ -24,12 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**快速创建一个水平方向、子控件从左到右布局的栈*/
 -(ATHorStack *)addStackHor;
 
-/**快速创建一个水平方向、子控件居中布局的栈*/
--(ATHorStack *)addStackHorCenter;
-
-/**快速创建一个垂直方向、子控件居中布局的栈*/
--(ATVerStack *)addStackVerCenter;
-
 /**快速创建一个水平方向、子控件均分的栈*/
 -(ATHorStack *)addStackHorEqual;
 

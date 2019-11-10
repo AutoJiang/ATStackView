@@ -8,15 +8,18 @@
 
 #import "ATHorStack.h"
 #import "UIView+ATStack2.h"
+#import "ATStack+Private.h"
 
 @implementation ATHorStack
+
+//@synthesize axis = _axis
 
 - (instancetype)initWithView:(UIView *)view{
     self = [super initWithView:view];
     if(self){
-        self.axis = UILayoutConstraintAxisHorizontal;
-        self.alignment = UIStackViewAlignmentLeading;
-        self.distribution = UIStackViewDistributionFill;
+        [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisHorizontal] forKey:@"axis"];
+        self.alignment = ATStackAlignmentCenter;
+        self.distribution = ATStackDistributionFill;
     }
     return self;
 }
@@ -35,27 +38,16 @@
 }
 
 -(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill position:(ATStackViewPosition)position{
-    [self.arrangedSubviews addObject:view];
+    [self addArrangedSubview:view position:position];
     view.info.width = width;
     view.info.isFill = isFill;
 }
 
--(void)layoutFrame{
-    if(self.arrangedSubviews.count <= 0){
-        return;
-    }
-    if (self.distribution == UIStackViewDistributionFill) {
-        [self layoutDistributionFrame];
-    }else if (self.distribution == UIStackViewDistributionFillEqually){
-        [self layoutEqualFrame];
-    }
-}
-
--(void)layoutDistributionFrame{
+-(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
     CGFloat height = self.view.frame.size.height;
     CGFloat x = 0;
-    for (int i = 0; i < self.arrangedSubviews.count; i++) {
-        UIView *v = self.arrangedSubviews[i];
+    for (int i = 0; i < arrangedSubviews.count; i++) {
+        UIView *v = arrangedSubviews[i];
         [v sizeToFit];
         CGFloat h = v.frame.size.height;
         CGFloat y = 0;
@@ -64,11 +56,11 @@
             y = 0;
             h = height;
         }else{
-            if (self.alignment == UIStackViewAlignmentLeading) {
+            if (self.alignment == ATStackAlignmentLeading) {
                 y = 0;
-            }else if(self.alignment == UIStackViewAlignmentCenter){
+            }else if(self.alignment == ATStackAlignmentCenter){
                 y = (height - h) / 2.0;
-            }else if (self.alignment == UIStackViewAlignmentTrailing){
+            }else if (self.alignment == ATStackViewPositionTail){
                 y = height - h;
             }
         }
@@ -77,17 +69,41 @@
         x += self.spacing + w + v.info.space;
         [v.stack layoutFrame];
     }
+    return x;
 }
 
+-(void)layoutHeadFrames{
+    [self layoutCommonFrames:self.arrangedSubviewsHead];
+}
+
+-(void)layoutCenterFrames{
+    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsCenter];
+    CGFloat x = (self.view.frame.size.width - length)/2;
+    [self moveX:x arrangedSubviews:self.arrangedSubviewsCenter];
+}
+
+-(void)layoutTailFrames{
+    CGFloat length = [self layoutCommonFrames:self.arrangedSubviewsTail];
+    CGFloat x = self.view.frame.size.width - length;
+    [self moveX:x arrangedSubviews:self.arrangedSubviewsCenter];
+}
+
+-(void)moveX:(CGFloat)x arrangedSubviews:(NSMutableArray* )arrangedSubviews{
+    for (UIView *v in arrangedSubviews) {
+        v.frame = CGRectMake(x, v.frame.origin.y, v.frame.size.width, v.frame.size.height);
+    }
+}
+
+
 -(void)layoutEqualFrame{
-    long count = self.arrangedSubviews.count;
+    long count = self.arrangedSubviewsHead.count;
     CGFloat height = self.view.frame.size.height;
     CGFloat x = 0;
     CGFloat spaceSum = (count - 1)*self.spacing;
     CGFloat w =  (self.view.frame.size.width - spaceSum)/count;
     
-    for (int i = 0; i < self.arrangedSubviews.count; i++) {
-        UIView *v = self.arrangedSubviews[i];
+    for (int i = 0; i < self.arrangedSubviewsHead.count; i++) {
+        UIView *v = self.arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat h = v.frame.size.height;
         CGFloat y = 0;
@@ -95,11 +111,11 @@
             y = 0;
             h = height;
         }else{
-            if (self.alignment == UIStackViewAlignmentLeading) {
+            if (self.alignment == ATStackAlignmentLeading) {
                 y = 0;
-            }else if(self.alignment == UIStackViewAlignmentCenter){
+            }else if(self.alignment == ATStackAlignmentCenter){
                 y = (height - h) / 2.0;
-            }else if (self.alignment == UIStackViewAlignmentTrailing){
+            }else if (self.alignment == ATStackViewPositionTail){
                 y = height - h;
             }
         }
