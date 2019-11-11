@@ -29,8 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    ATVerStack *stack = [self.view getStackVer];
+    UIScrollView *scrollView = [UIScrollView new];
+    scrollView.alwaysBounceVertical = true;
+    scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    scrollView.frame = self.view.bounds;
+    [self.view addSubview:scrollView];
+    ATVerStack *stack = [scrollView getStackVer];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;

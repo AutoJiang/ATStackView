@@ -24,8 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.view updateConstraints];
-    ATVerStack *stack = [self.view getStackVer];
+    UIScrollView *scrollView = [UIScrollView new];
+    scrollView.alwaysBounceVertical = true;
+    scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    scrollView.frame = self.view.bounds;
+    [self.view addSubview:scrollView];
+    ATVerStack *stack = [scrollView getStackVer];
     [stack addSpacing:10];
     [stack addArrangedSubview:[self createCellWithTitle:@"朋友圈" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
     [stack addSpacing:14];

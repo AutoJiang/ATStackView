@@ -45,6 +45,7 @@ typedef enum ATStackViewPosition: NSUInteger {
     ATStackViewPositionCenter,
 /**从尾部添加元素*/
     ATStackViewPositionTail,
+    
 } ATStackViewPosition;
 
 @interface ATStack: NSObject{
