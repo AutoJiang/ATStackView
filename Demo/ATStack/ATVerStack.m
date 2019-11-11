@@ -16,7 +16,7 @@
     self = [super initWithView:view];
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisVertical] forKey:@"axis"];
-        self.alignment = ATStackAlignmentCenter;
+        self.alignment = ATStackAlignmentLeading;
         self.distribution = ATStackDistributionFill;
     }
     return self;
@@ -92,7 +92,7 @@
 
 -(void)moveY:(CGFloat)y arrangedSubviews:(NSMutableArray* )arrangedSubviews{
     for (UIView *v in arrangedSubviews) {
-        v.frame = CGRectMake(v.frame.origin.x, y, v.frame.size.width, v.frame.size.height);
+        v.frame = CGRectMake(v.frame.origin.x, y + v.frame.origin.y, v.frame.size.width, v.frame.size.height);
     }
 }
 
