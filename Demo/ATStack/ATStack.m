@@ -15,11 +15,12 @@
 
 @implementation ATStack
 
-- (instancetype)initWithView:(UIView*)view
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset
 {
     self = [super init];
     if (self) {
         self.view = view;
+        self->inset = inset;
         self->arrangedSubviewsHead = [[NSMutableArray alloc] init];
         self->arrangedSubviewsCenter = [[NSMutableArray alloc] init];
         self->arrangedSubviewsTail = [[NSMutableArray alloc] init];
@@ -92,6 +93,15 @@
     }
 }
 
+- (CGRect)frame{
+    CGFloat x = self.view.frame.origin.x + inset.left;
+    CGFloat y = self.view.frame.origin.y + inset.top;
+    CGFloat w = self.view.frame.size.width - inset.left - inset.right;
+    CGFloat h = self.view.frame.size.height - inset.top - inset.bottom;
+    return CGRectMake(x, y, w, h);
+}
+
+
 -(void)layoutHeadFrames{
     
 }
@@ -107,5 +117,6 @@
 -(void)layoutEqualFrame{
     
 }
+
 
 @end

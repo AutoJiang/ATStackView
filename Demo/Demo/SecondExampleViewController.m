@@ -22,7 +22,7 @@
     for(int i = 0; i < 3; i++) {
         UIView *view = [UIView new];
         view.backgroundColor = [UIColor greenColor];
-        ATHorStack *horStack = [view addStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+        ATHorStack *horStack = [view addStackHorEqualWithInset:UIEdgeInsetsMake(10, 20, 10, 20)];
         horStack.spacing = 20;
         for (int j = 0; j < 3; j++) {
             UIView *view = [UIView new];

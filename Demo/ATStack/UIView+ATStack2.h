@@ -35,10 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(ATHorStack *)addStackHorWithInset:(UIEdgeInsets)inset;
 
--(ATHorStack *)addStackHorCenterWithInset:(UIEdgeInsets)inset;
-
--(ATVerStack *)addStackVerCenterWithInset:(UIEdgeInsets)inset;
-
 -(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset;
 
 -(ATVerStack *)addStackVerEqualWithInset:(UIEdgeInsets)inset;

@@ -13,8 +13,8 @@
 @implementation ATHorStack
 
 
-- (instancetype)initWithView:(UIView *)view{
-    self = [super initWithView:view];
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset{
+    self = [super initWithView:view inset:inset];
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisHorizontal] forKey:@"axis"];
         self.alignment = ATStackAlignmentLeading;
@@ -43,7 +43,7 @@
 }
 
 -(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
-    CGFloat height = self.view.frame.size.height;
+    CGFloat height = self.frame.size.height;
     CGFloat x = 0;
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
@@ -77,13 +77,13 @@
 
 -(void)layoutCenterFrames{
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
-    CGFloat x = (self.view.frame.size.width - length)/2;
+    CGFloat x = (self.frame.size.width - length)/2;
     [self moveX:x arrangedSubviews:self->arrangedSubviewsCenter];
 }
 
 -(void)layoutTailFrames{
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
-    CGFloat x = self.view.frame.size.width - length;
+    CGFloat x = self.frame.size.width - length;
     [self moveX:x arrangedSubviews:self->arrangedSubviewsTail];
 }
 
@@ -95,22 +95,22 @@
 
 -(void)layoutEqualFrame{
     long count = self->arrangedSubviewsHead.count;
-    CGFloat height = self.view.frame.size.height;
-    CGFloat x = 0;
+    CGFloat height = self.frame.size.height;
+    CGFloat x = inset.left;
     CGFloat spaceSum = (count - 1)*self.spacing;
-    CGFloat w =  (self.view.frame.size.width - spaceSum)/count;
+    CGFloat w =  (self.frame.size.width - spaceSum)/count;
     
     for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
         UIView *v = self->arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat h = v.frame.size.height;
-        CGFloat y = 0;
+        CGFloat y = inset.top;
         if(v.info.isFill){
-            y = 0;
+            y = inset.top;
             h = height;
         }else{
             if (self.alignment == ATStackAlignmentLeading) {
-                y = 0;
+                y = inset.top;
             }else if(self.alignment == ATStackAlignmentCenter){
                 y = (height - h) / 2.0;
             }else if (self.alignment == ATStackViewPositionTail){

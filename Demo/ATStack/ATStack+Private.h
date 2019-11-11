@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ATStack()
 
-- (instancetype)initWithView:(UIView*)view;
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset;
 
 -(void)layoutHeadFrames;
 

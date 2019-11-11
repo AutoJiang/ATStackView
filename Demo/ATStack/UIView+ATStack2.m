@@ -21,7 +21,9 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 }
 
 -(void)setStack:(ATStack * _Nonnull)stack{
-    objc_setAssociatedObject(self, kATStackAssociatedKey, stack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (stack) {
+        objc_setAssociatedObject(self, kATStackAssociatedKey, stack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 -(ATStackInfo*)info{
@@ -34,40 +36,40 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 }
 
 -(ATVerStack *)addStackVer{
-    return [[ATVerStack alloc] initWithView:self];
+    return [self addStackVerWithInset:UIEdgeInsetsZero];
+}
+
+-(ATVerStack *)addStackVerWithInset:(UIEdgeInsets)inset{
+    return [[ATVerStack alloc] initWithView:self inset:inset];
 }
 
 -(ATHorStack *)addStackHor{
-    return [[ATHorStack alloc] initWithView:self];
-}
-
--(ATHorStack*)addStackHorEqual{
-    ATHorStack *stack = [[ATHorStack alloc] initWithView:self];
-    stack.distribution = UIStackViewDistributionFillEqually;
-    stack.alignment = UIStackViewAlignmentFill;
-    return stack;
-}
-
--(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
-    return [self addStackHorEqual];
+    return [self addStackHorWithInset:UIEdgeInsetsZero];
 }
 
 -(ATHorStack *)addStackHorWithInset:(UIEdgeInsets)inset{
-    return [self addStackHor];
+    return [[ATHorStack alloc] initWithView:self inset:inset];
+}
+
+-(ATHorStack*)addStackHorEqual{
+    return [self addStackHorEqualWithInset:UIEdgeInsetsZero];
+}
+
+-(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
+    ATHorStack *stack = [[ATHorStack alloc] initWithView:self inset:inset];
+    stack.distribution = ATStackDistributionFillEqually;
+    return stack;
 }
 
 -(ATVerStack *)addStackVerEqual{
-    ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
-    stack.distribution = UIStackViewDistributionFillEqually;
-    stack.alignment = UIStackViewAlignmentFill;
+    return [self addStackVerEqualWithInset:UIEdgeInsetsZero];
+}
+
+-(ATVerStack *)addStackVerEqualWithInset:(UIEdgeInsets)inset{
+    ATVerStack *stack = [[ATVerStack alloc] initWithView:self inset:inset];
+    stack.distribution = ATStackDistributionFillEqually;
     return stack;
 }
 
--(ATVerStack *)addStackVerCenter{
-    ATVerStack *stack = [[ATVerStack alloc] initWithView:self];
-    stack.distribution = UIStackViewDistributionFill;
-    stack.alignment = UIStackViewAlignmentCenter;
-    return stack;
-}
 
 @end

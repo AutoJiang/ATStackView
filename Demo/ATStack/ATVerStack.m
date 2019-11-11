@@ -12,8 +12,8 @@
 
 @implementation ATVerStack
 
-- (instancetype)initWithView:(UIView *)view{
-    self = [super initWithView:view];
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)insets{
+    self = [super initWithView:view inset:insets];
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisVertical] forKey:@"axis"];
         self.alignment = ATStackAlignmentLeading;
@@ -45,7 +45,7 @@
 }
 
 -(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
-    CGFloat width = self.view.frame.size.width;
+    CGFloat width = self.frame.size.width;
     CGFloat y = 0;
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
@@ -57,11 +57,11 @@
             x = 0;
             w = width;
         }else{
-            if (self.alignment == UIStackViewAlignmentLeading) {
+            if (self.alignment == ATStackAlignmentLeading) {
                 x = 0;
-            }else if(self.alignment == UIStackViewAlignmentCenter){
+            }else if(self.alignment == ATStackAlignmentCenter){
                 x = (width - w) / 2.0;
-            }else if (self.alignment == UIStackViewAlignmentTrailing){
+            }else if (self.alignment == ATStackAlignmentTrailing){
                 x = width - w;
             }
         }
@@ -79,14 +79,14 @@
 
 -(void)layoutCenterFrames{
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
-    CGFloat y = (self.view.frame.size.height - length)/2;
+    CGFloat y = (self.frame.size.height - length)/2;
     [self moveY:y arrangedSubviews:self->arrangedSubviewsCenter];
     
 }
 
 -(void)layoutTailFrames{
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
-    CGFloat y = self.view.frame.size.height - length;
+    CGFloat y = self.frame.size.height - length;
     [self moveY:y arrangedSubviews:self->arrangedSubviewsTail];
 }
 
@@ -98,24 +98,24 @@
 
 -(void)layoutEqualFrame{
     long count = self->arrangedSubviewsHead.count;
-    CGFloat width = self.view.frame.size.width;
-    CGFloat y = 0;
+    CGFloat width = self.frame.size.width;
+    CGFloat y = inset.top;
     CGFloat spaceSum = (count - 1)*self.spacing;
-    CGFloat h =  (self.view.frame.size.height - spaceSum)/count;
+    CGFloat h =  (self.frame.size.height - spaceSum)/count;
     for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
         UIView *v = self->arrangedSubviewsHead[i];
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
-        CGFloat x = 0;
+        CGFloat x = inset.left;
         if(v.info.isFill){
-            x = 0;
+            x = inset.left;
             w = width;
         }else{
-            if (self.alignment == UIStackViewAlignmentLeading) {
-                x = 0;
-            }else if(self.alignment == UIStackViewAlignmentCenter){
+            if (self.alignment == ATStackAlignmentLeading) {
+                x = inset.left;
+            }else if(self.alignment == ATStackAlignmentCenter){
                 x = (width - w) / 2.0;
-            }else if (self.alignment == UIStackViewAlignmentTrailing){
+            }else if (self.alignment == ATStackAlignmentTrailing){
                 x = width - w;
             }
         }

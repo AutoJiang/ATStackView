@@ -54,6 +54,8 @@ typedef enum ATStackViewPosition: NSUInteger {
     NSMutableArray *arrangedSubviewsCenter;
     @protected
     NSMutableArray *arrangedSubviewsTail;
+    @protected
+    UIEdgeInsets inset;
 }
 
 @property(nonatomic, weak) UIView *view;
@@ -66,6 +68,7 @@ typedef enum ATStackViewPosition: NSUInteger {
 
 @property(nonatomic, readwrite, assign) CGFloat spacing;
 
+@property(nonatomic, readonly, assign) CGRect frame;
 
 -(void)addArrangedSubview:(UIView*)view;
 

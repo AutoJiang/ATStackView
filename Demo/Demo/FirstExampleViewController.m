@@ -146,7 +146,7 @@
 //
 -(UIView*)createControlsView{
     UIView *view = [UIView new];
-    ATHorStack *stack = [view addStackHorEqual];
+    ATHorStack *stack = [view addStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
 //    ATHorStackView *stack = [ATHorStackView getStackHorEqueal];
     stack.spacing = 3.0;
     UIButton *button1 = [UIButton new];
@@ -155,27 +155,27 @@
     button1.backgroundColor = [UIColor blueColor];
     [button1 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
     [stack addArrangedSubview:button1];
-    button1.tag = UIStackViewAlignmentLeading;
+    button1.tag = ATStackAlignmentTrailing;
     UIButton *button2 = [UIButton new];
     [button2 setTitle:@"Center" forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button2.backgroundColor = [UIColor blueColor] ;
     [button2 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
     [stack addArrangedSubview:button2];
-    button2.tag = UIStackViewAlignmentCenter;
+    button2.tag = ATStackAlignmentCenter;
     UIButton *button3 = [UIButton new];
     [button3 setTitle:@"Trailing" forState:UIControlStateNormal];
     [button3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button3.backgroundColor = [UIColor blueColor] ;
     [button3 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
     [stack addArrangedSubview:button3];
-    button3.tag = UIStackViewAlignmentTrailing;
+    button3.tag = ATStackAlignmentTrailing;
     return view;
 }
 
 -(UIView*)getEqualVerView{
     UIView *view = [UIView new];
-    ATVerStack *stack = [view addStackVerEqual];
+    ATVerStack *stack = [view addStackVerEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
