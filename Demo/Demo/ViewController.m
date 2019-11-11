@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIView+ATStack2.h"
+#import "UIView+ATStack.h"
 
 @interface ViewController ()
 
@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self.view updateConstraints];
-    ATVerStack *stack = [self.view addStackVer];
+    ATVerStack *stack = [self.view getStackVer];
     [stack addSpacing:10];
     [stack addArrangedSubview:[self createCellWithTitle:@"朋友圈" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
     [stack addSpacing:14];
@@ -48,7 +48,7 @@
 -(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
     control.backgroundColor = [UIColor whiteColor];
-    ATHorStack *stack = [control addStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
+    ATHorStack *stack = [control getStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
     stack.spacing = 10;
     stack.alignment = ATStackAlignmentCenter;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];

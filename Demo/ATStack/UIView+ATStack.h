@@ -1,5 +1,5 @@
 //
-//  UIView+ATStack2.h
+//  UIView+ATStack.h
 //  Demo
 //
 //  Created by jiang aoteng on 2019/11/4.
@@ -13,31 +13,31 @@
 #import "ATStackInfo.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIView(ATStack2)
+@interface UIView(ATStack)
 
 
 //快速为view添加一个Stack，返回ATVerStack
 
 /**快速创建一个垂直方向、子控件从上到下布局的栈*/
--(ATVerStack *)addStackVer;
+-(ATVerStack *)getStackVer;
 
 /**快速创建一个水平方向、子控件从左到右布局的栈*/
--(ATHorStack *)addStackHor;
+-(ATHorStack *)getStackHor;
 
 /**快速创建一个水平方向、子控件均分的栈*/
--(ATHorStack *)addStackHorEqual;
+-(ATHorStack *)getStackHorEqual;
 
 /**快速创建一个垂直方向、子控件均分的栈*/
--(ATVerStack *)addStackVerEqual;
+-(ATVerStack *)getStackVerEqual;
 
 //inset代表内间距
--(ATVerStack *)addStackVerWithInset:(UIEdgeInsets)inset;
+-(ATVerStack *)getStackVerWithInset:(UIEdgeInsets)inset;
 
--(ATHorStack *)addStackHorWithInset:(UIEdgeInsets)inset;
+-(ATHorStack *)getStackHorWithInset:(UIEdgeInsets)inset;
 
--(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset;
+-(ATHorStack *)getStackHorEqualWithInset:(UIEdgeInsets)inset;
 
--(ATVerStack *)addStackVerEqualWithInset:(UIEdgeInsets)inset;
+-(ATVerStack *)getStackVerEqualWithInset:(UIEdgeInsets)inset;
 
 //添加分割线
 -(UIView *)addLineSeparate;

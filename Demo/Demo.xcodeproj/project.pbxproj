@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C961E8062370748A00626CAB /* ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8052370748A00626CAB /* ATStack.m */; };
-		C961E809237076F700626CAB /* UIView+ATStack2.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E808237076F700626CAB /* UIView+ATStack2.m */; };
+		C961E809237076F700626CAB /* UIView+ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E808237076F700626CAB /* UIView+ATStack.m */; };
 		C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E80B2371C7E300626CAB /* ATHorStack.m */; };
 		C961E8122371D4EF00626CAB /* ATVerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8112371D4EF00626CAB /* ATVerStack.m */; };
 		C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8142372F99B00626CAB /* ATStackInfo.m */; };
@@ -42,18 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C961E7F72370620A00626CAB /* ATVerStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATVerStackView.m; path = ../../Sources/ATVerStackView.m; sourceTree = "<group>"; };
-		C961E7F82370620A00626CAB /* ATVerStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATVerStackView.h; path = ../../Sources/ATVerStackView.h; sourceTree = "<group>"; };
-		C961E7F92370620A00626CAB /* ATHorStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATHorStackView.m; path = ../../Sources/ATHorStackView.m; sourceTree = "<group>"; };
-		C961E7FA2370620A00626CAB /* ATHorStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATHorStackView.h; path = ../../Sources/ATHorStackView.h; sourceTree = "<group>"; };
-		C961E7FB2370620A00626CAB /* ATStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATStackView.m; path = ../../Sources/ATStackView.m; sourceTree = "<group>"; };
-		C961E7FC2370620A00626CAB /* UIView+ATStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+ATStack.m"; path = "../../Sources/UIView+ATStack.m"; sourceTree = "<group>"; };
-		C961E7FD2370620A00626CAB /* UIView+ATStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+ATStack.h"; path = "../../Sources/UIView+ATStack.h"; sourceTree = "<group>"; };
-		C961E7FE2370620A00626CAB /* ATStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATStackView.h; path = ../../Sources/ATStackView.h; sourceTree = "<group>"; };
 		C961E8042370748A00626CAB /* ATStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATStack.h; sourceTree = "<group>"; };
 		C961E8052370748A00626CAB /* ATStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATStack.m; sourceTree = "<group>"; };
-		C961E807237076F700626CAB /* UIView+ATStack2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ATStack2.h"; sourceTree = "<group>"; };
-		C961E808237076F700626CAB /* UIView+ATStack2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ATStack2.m"; sourceTree = "<group>"; };
+		C961E807237076F700626CAB /* UIView+ATStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ATStack.h"; sourceTree = "<group>"; };
+		C961E808237076F700626CAB /* UIView+ATStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ATStack.m"; sourceTree = "<group>"; };
 		C961E80A2371C7E300626CAB /* ATHorStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATHorStack.h; sourceTree = "<group>"; };
 		C961E80B2371C7E300626CAB /* ATHorStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATHorStack.m; sourceTree = "<group>"; };
 		C961E8102371D4EF00626CAB /* ATVerStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATVerStack.h; sourceTree = "<group>"; };
@@ -108,21 +100,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C961E7F6237061F700626CAB /* ATStackView */ = {
-			isa = PBXGroup;
-			children = (
-				C961E7FA2370620A00626CAB /* ATHorStackView.h */,
-				C961E7F92370620A00626CAB /* ATHorStackView.m */,
-				C961E7FE2370620A00626CAB /* ATStackView.h */,
-				C961E7FB2370620A00626CAB /* ATStackView.m */,
-				C961E7F82370620A00626CAB /* ATVerStackView.h */,
-				C961E7F72370620A00626CAB /* ATVerStackView.m */,
-				C961E7FD2370620A00626CAB /* UIView+ATStack.h */,
-				C961E7FC2370620A00626CAB /* UIView+ATStack.m */,
-			);
-			path = ATStackView;
-			sourceTree = "<group>";
-		};
 		C961E8032370747200626CAB /* ATStack */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +109,8 @@
 				C961E80B2371C7E300626CAB /* ATHorStack.m */,
 				C961E8102371D4EF00626CAB /* ATVerStack.h */,
 				C961E8112371D4EF00626CAB /* ATVerStack.m */,
-				C961E807237076F700626CAB /* UIView+ATStack2.h */,
-				C961E808237076F700626CAB /* UIView+ATStack2.m */,
+				C961E807237076F700626CAB /* UIView+ATStack.h */,
+				C961E808237076F700626CAB /* UIView+ATStack.m */,
 				C961E8132372F99B00626CAB /* ATStackInfo.h */,
 				C961E8142372F99B00626CAB /* ATStackInfo.m */,
 				C9E04F8B23785C10001F9AC0 /* ATStack+Private.h */,
@@ -145,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				C961E8032370747200626CAB /* ATStack */,
-				C961E7F6237061F700626CAB /* ATStackView */,
 				C998B6D9215F45A50024ADB2 /* Demo */,
 				C998B6F2215F45A50024ADB2 /* DemoTests */,
 				C998B6FD215F45A50024ADB2 /* DemoUITests */,
@@ -339,7 +315,7 @@
 				C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */,
 				C998B6EA215F45A50024ADB2 /* main.m in Sources */,
 				C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */,
-				C961E809237076F700626CAB /* UIView+ATStack2.m in Sources */,
+				C961E809237076F700626CAB /* UIView+ATStack.m in Sources */,
 				C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */,
 				C998B741215F694C0024ADB2 /* SecondExampleViewController.m in Sources */,
 				C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */,

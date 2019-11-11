@@ -7,7 +7,7 @@
 //
 
 #import "FirstExampleViewController.h"
-#import "UIView+ATStack2.h"
+#import "UIView+ATStack.h"
 #define RandomColor [UIColor colorWithRed: (random()%256)/255.0 green:(random()%256)/255.0 blue:(random()%256)/255.0 alpha:1.0]
 
 @interface FirstExampleViewController ()
@@ -29,12 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    ATVerStack *verStack = [self.view addStackVerWithInset:UIEdgeInsetsMake(100, 0, 100, 0)];
-//    self.stack = [self createExampleStackView];
-//    [verStack addArrangedSubview:self.stack isFill:true];
-//    [verStack addArrangedSubview:[self createControlsView] height:40 isFill:true position:ATStackViewPositionTail];
 
-    ATVerStack *stack = [self.view addStackVer];
+    ATVerStack *stack = [self.view getStackVer];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
@@ -75,7 +71,7 @@
 -(UIView*)getRowView{
     UIView *rowView = [UIView new];
     rowView.backgroundColor = [UIColor redColor];
-    ATHorStack *stack = [rowView addStackHor];
+    ATHorStack *stack = [rowView getStackHor];
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
     [stack addArrangedSubview:view1 width:50 isFill:true];
@@ -109,45 +105,9 @@
     return rowView;
 }
 
-//-(ATVerStack*)createExampleStackView{
-//    ATVerStack *stack = [ATVerStackView getStackVer];
-//    stack.spacing = 10;
-//    UIView *view1 = [UIView new];
-//    view1.backgroundColor = RandomColor;
-//    [stack addArrangedSubview:view1 height:30 isFill:true];
-//    [stack addSpacing:30];
-//    UIView *view2 = [UIView new];
-//    view2.backgroundColor = RandomColor;
-//    [stack addArrangedSubview:view2 height:40 isFill:true];
-//    UIView *view3 = [UIView new];
-//    view3.backgroundColor = RandomColor;
-//    [stack addArrangedSubview:view3 height:50 isFill:true];
-//    UILabel *label1 = [UILabel new];
-//    label1.text = @"label1 ";
-//    label1.textColor = RandomColor;
-//    label1.backgroundColor = RandomColor;
-//    //不设置高度,isFill = false。自适应大小
-//    [stack addArrangedSubview:label1];
-//    UILabel *label2 = [UILabel new];
-//    label2.text = @"label2";
-//    label2.textColor = RandomColor;
-//    label2.backgroundColor = RandomColor;
-//    label2.textAlignment = NSTextAlignmentCenter;
-//    //label2 不设置高度,isFill = true， 宽度拉伸填满"
-//    [stack addArrangedSubview:label2 isFill:true];
-//    UILabel *label3 = [UILabel new];
-//    label3.text = @"label3";
-//    label3.textColor = RandomColor;
-//    label3.backgroundColor = RandomColor;
-//    //label3 设置高度，isFill = false，高度自定义，宽度自适应"
-//    [stack addArrangedSubview:label3 height:50 isFill:false];
-//    return stack;
-//}
-//
 -(UIView*)createControlsView{
     UIView *view = [UIView new];
-    ATHorStack *stack = [view addStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
-//    ATHorStackView *stack = [ATHorStackView getStackHorEqueal];
+    ATHorStack *stack = [view getStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 3.0;
     UIButton *button1 = [UIButton new];
     [button1 setTitle:@"Leading" forState:UIControlStateNormal];
@@ -175,7 +135,7 @@
 
 -(UIView*)getEqualVerView{
     UIView *view = [UIView new];
-    ATVerStack *stack = [view addStackVerEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    ATVerStack *stack = [view getStackVerEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;

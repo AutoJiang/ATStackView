@@ -1,19 +1,19 @@
 //
-//  UIView+ATStack2.m
+//  UIView+ATStack.m
 //  Demo
 //
 //  Created by jiang aoteng on 2019/11/4.
 //  Copyright © 2019 jiang aoteng. All rights reserved.
 //
 
-#import "UIView+ATStack2.h"
+#import "UIView+ATStack.h"
 #import "ATStack+Private.h"
 #import <objc/runtime.h>
 
 static const void *kATStackAssociatedKey = &kATStackAssociatedKey;
 static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 
-@implementation UIView(ATStack2)
+@implementation UIView(ATStack)
 
 -(ATStack*)stack{
     ATStack *stack = objc_getAssociatedObject(self, kATStackAssociatedKey);
@@ -35,37 +35,37 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return stack;
 }
 
--(ATVerStack *)addStackVer{
-    return [self addStackVerWithInset:UIEdgeInsetsZero];
+-(ATVerStack *)getStackVer{
+    return [self getStackVerWithInset:UIEdgeInsetsZero];
 }
 
--(ATVerStack *)addStackVerWithInset:(UIEdgeInsets)inset{
+-(ATVerStack *)getStackVerWithInset:(UIEdgeInsets)inset{
     return [[ATVerStack alloc] initWithView:self inset:inset];
 }
 
--(ATHorStack *)addStackHor{
-    return [self addStackHorWithInset:UIEdgeInsetsZero];
+-(ATHorStack *)getStackHor{
+    return [self getStackHorWithInset:UIEdgeInsetsZero];
 }
 
--(ATHorStack *)addStackHorWithInset:(UIEdgeInsets)inset{
+-(ATHorStack *)getStackHorWithInset:(UIEdgeInsets)inset{
     return [[ATHorStack alloc] initWithView:self inset:inset];
 }
 
--(ATHorStack*)addStackHorEqual{
-    return [self addStackHorEqualWithInset:UIEdgeInsetsZero];
+-(ATHorStack*)getStackHorEqual{
+    return [self getStackHorEqualWithInset:UIEdgeInsetsZero];
 }
 
--(ATHorStack *)addStackHorEqualWithInset:(UIEdgeInsets)inset{
+-(ATHorStack *)getStackHorEqualWithInset:(UIEdgeInsets)inset{
     ATHorStack *stack = [[ATHorStack alloc] initWithView:self inset:inset];
     stack.distribution = ATStackDistributionFillEqually;
     return stack;
 }
 
--(ATVerStack *)addStackVerEqual{
-    return [self addStackVerEqualWithInset:UIEdgeInsetsZero];
+-(ATVerStack *)getStackVerEqual{
+    return [self getStackVerEqualWithInset:UIEdgeInsetsZero];
 }
 
--(ATVerStack *)addStackVerEqualWithInset:(UIEdgeInsets)inset{
+-(ATVerStack *)getStackVerEqualWithInset:(UIEdgeInsets)inset{
     ATVerStack *stack = [[ATVerStack alloc] initWithView:self inset:inset];
     stack.distribution = ATStackDistributionFillEqually;
     return stack;

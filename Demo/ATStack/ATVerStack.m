@@ -7,7 +7,7 @@
 //
 
 #import "ATVerStack.h"
-#import "UIView+ATStack2.h"
+#import "UIView+ATStack.h"
 #import "ATStack+Private.h"
 
 @implementation ATVerStack
