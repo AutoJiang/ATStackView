@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) CGFloat space;
 
+//隐藏元素，同时改变其他元素的位置
+@property(nonatomic, assign) BOOL hidden;
+
 @end
 
 NS_ASSUME_NONNULL_END

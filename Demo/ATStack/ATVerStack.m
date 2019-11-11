@@ -49,6 +49,7 @@
     CGFloat y = 0;
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
+        if(v.at_hidden) continue;
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
         CGFloat x = 0;
@@ -97,13 +98,17 @@
 }
 
 -(void)layoutEqualFrame{
-    long count = self->arrangedSubviewsHead.count;
+    long count = 0;
+    for (UIView *v in self->arrangedSubviewsHead) {
+        if(!v.at_hidden) count++;
+    }
     CGFloat width = self.frame.size.width;
     CGFloat y = inset.top;
     CGFloat spaceSum = (count - 1)*self.spacing;
     CGFloat h =  (self.frame.size.height - spaceSum)/count;
     for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
         UIView *v = self->arrangedSubviewsHead[i];
+        if(v.at_hidden) continue;
         [v sizeToFit];
         CGFloat w = v.frame.size.width;
         CGFloat x = inset.left;

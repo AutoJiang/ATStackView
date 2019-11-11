@@ -44,12 +44,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
-//隐藏元素，但是不改变其他元素的位置
+//隐藏元素，同时改变其他元素的位置
 -(void)setAt_hidden:(BOOL)hidden;
 
 -(BOOL)at_hidden;
 
--(void)setAt_width:(CGFloat)witdh;
+-(void)setAt_width:(CGFloat)width;
 
 -(CGFloat)at_width;
 

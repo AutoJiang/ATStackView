@@ -18,6 +18,7 @@
         self.width = 0;
         self.isFill = false;
         self.space = 0;
+        self.hidden = false;
     }
     return self;
 }

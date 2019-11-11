@@ -63,6 +63,7 @@
     label3.text = @"label3";
     label3.textColor = RandomColor;
     label3.backgroundColor = RandomColor;
+//    label3.at_hidden = true;
     //label3 设置高度，isFill = false，高度自定义，宽度自适应"
     [stack addArrangedSubview:label3 height:50 isFill:false];
     [stack addArrangedSubview:[self getRowView] height:80 isFill:true];
@@ -147,6 +148,7 @@
     [stack addSpacing:30];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
+//    view2.at_hidden = true;
     [stack addArrangedSubview:view2 height:60 isFill:true];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
