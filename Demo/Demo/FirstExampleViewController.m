@@ -34,7 +34,7 @@
     scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     scrollView.frame = self.view.bounds;
     [self.view addSubview:scrollView];
-    ATVerStack *stack = [scrollView getStackVer];
+    ATVerStack *stack = [scrollView getStackVerWithInset:UIEdgeInsetsMake(50, 20, 0, 20)];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
@@ -50,6 +50,7 @@
     label1.text = @"label1 ";
     label1.textColor = RandomColor;
     label1.backgroundColor = RandomColor;
+    label1.at_width = 100;
     //不设置高度,isFill = false。自适应大小
     [stack addArrangedSubview:label1];
     UILabel *label2 = [UILabel new];

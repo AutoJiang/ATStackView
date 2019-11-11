@@ -46,20 +46,20 @@
 
 -(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
     CGFloat width = self.frame.size.width;
-    CGFloat y = 0;
+    CGFloat y = inset.top;
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
         if(v.at_hidden) continue;
         [v sizeToFit];
-        CGFloat w = v.frame.size.width;
-        CGFloat x = 0;
+        CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
+        CGFloat x = inset.left;
         CGFloat h = v.info.height > 0 ? v.info.height: v.frame.size.height;
         if(v.info.isFill){
-            x = 0;
+            x = inset.left;
             w = width;
         }else{
             if (self.alignment == ATStackAlignmentLeading) {
-                x = 0;
+                x = inset.left;
             }else if(self.alignment == ATStackAlignmentCenter){
                 x = (width - w) / 2.0;
             }else if (self.alignment == ATStackAlignmentTrailing){
@@ -110,7 +110,7 @@
         UIView *v = self->arrangedSubviewsHead[i];
         if(v.at_hidden) continue;
         [v sizeToFit];
-        CGFloat w = v.frame.size.width;
+        CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
         CGFloat x = inset.left;
         if(v.info.isFill){
             x = inset.left;

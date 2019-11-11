@@ -79,4 +79,20 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return self.info.hidden;
 }
 
+-(void)setAt_width:(CGFloat)width{
+    self.info.width = width;
+}
+
+-(CGFloat)at_width{
+    return self.info.width;
+}
+
+-(void)setAt_height:(CGFloat)height{
+    self.info.height = height;
+}
+
+-(CGFloat)at_height{
+    return self.info.height;
+}
+
 @end
