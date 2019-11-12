@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //添加分割线
 -(UIView *)addLineSeparate;
-
+//返回的分割线可自定义颜色和高度
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
 //隐藏元素，同时改变其他元素的位置

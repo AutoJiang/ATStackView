@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 //隐藏元素，同时改变其他元素的位置
 @property(nonatomic, assign) BOOL hidden;
 
+
+@property(nonatomic, strong) UIView *separateLine;
+
 @end
 
 NS_ASSUME_NONNULL_END

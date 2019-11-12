@@ -74,8 +74,10 @@
     }
 }
 
+
 -(void)layoutFrame{
     if(self->arrangedSubviewsHead.count <= 0 && self->arrangedSubviewsCenter.count <= 0 && self->arrangedSubviewsTail.count <= 0){
+        [self addSeparateLine];
         return;
     }
     if (self.distribution == ATStackDistributionFill) {
@@ -90,6 +92,18 @@
         }
     }else if (self.distribution == ATStackDistributionFillEqually){
         [self layoutEqualFrame];
+    }
+    [self addSeparateLine];
+}
+
+-(void)addSeparateLine{
+    if (self.view.info.separateLine) {
+        CGFloat x = self.view.info.separateLine.frame.origin.x;
+        CGFloat y = self.view.frame.size.height - self.view.info.separateLine.frame.size.height;
+        CGFloat w = self.view.frame.size.width - x;
+        CGFloat h = self.view.info.separateLine.frame.size.height;
+        self.view.info.separateLine.frame = CGRectMake(x, y, w, h);
+        [self.view addSubview: self.view.info.separateLine];
     }
 }
 

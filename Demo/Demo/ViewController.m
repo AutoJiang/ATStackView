@@ -52,7 +52,7 @@
 -(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
     control.backgroundColor = [UIColor whiteColor];
-    ATHorStack *stack = [control getStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 12)];
+    ATHorStack *stack = [control getStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 0)];
     stack.spacing = 10;
     stack.alignment = ATStackAlignmentCenter;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
@@ -65,7 +65,7 @@
     UIImageView *leftArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Chevron"]];
     [stack addArrangedSubview:leftArrow position:ATStackViewPositionTail];
     if (!isLast) {
-//        [control addLineSeparateWithLelfPadding:10];
+        [control addLineSeparateWithLelfPadding:10];
     }
     control.accessibilityIdentifier = title;
     [control addTarget:self action:@selector(cellOnclick:) forControlEvents:UIControlEventTouchUpInside];

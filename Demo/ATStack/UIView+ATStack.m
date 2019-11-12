@@ -71,6 +71,18 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return stack;
 }
 
+-(UIView *)addLineSeparate{
+    return [self addLineSeparateWithLelfPadding:0];
+}
+
+-(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding{
+    
+    UIView *separateLine =[[UIView alloc]initWithFrame:CGRectMake(leftPadding, 0, 0, 1.0/[UIScreen mainScreen].scale)];
+    separateLine.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.info.separateLine = separateLine;
+    return separateLine;
+}
+
 -(void)setAt_hidden:(BOOL)hidden{
     self.info.hidden = hidden;
 }
