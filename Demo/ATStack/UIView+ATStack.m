@@ -84,6 +84,7 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 }
 
 -(void)setAt_hidden:(BOOL)hidden{
+    self.hidden = hidden;
     self.info.hidden = hidden;
 }
 

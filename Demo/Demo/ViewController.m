@@ -15,13 +15,6 @@
 
 @implementation ViewController
 
-//-(void)loadView{
-//    UIScrollView *scrollView = [UIScrollView new];
-//    scrollView.alwaysBounceVertical = true;
-//    scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//    self.view  = scrollView;
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIScrollView *scrollView = [UIScrollView new];

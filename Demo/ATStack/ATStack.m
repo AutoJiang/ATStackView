@@ -67,14 +67,6 @@
     }
 }
 
--(void)setAlignment:(ATStackAlignment)alignment{
-    if(_alignment != alignment){
-        _alignment = alignment;
-        [self layoutFrame];
-    }
-}
-
-
 -(void)layoutFrame{
     if(self->arrangedSubviewsHead.count <= 0 && self->arrangedSubviewsCenter.count <= 0 && self->arrangedSubviewsTail.count <= 0){
         [self addSeparateLine];
