@@ -24,18 +24,10 @@ typedef enum ATStackAlignment : NSInteger {
 //    ATStackAlignmentFirstBaseline,
     ATStackAlignmentCenter,
     ATStackAlignmentTrailing,
+    ATStackAlignmentAuto,
 //    ATStackAlignmentBottom,
 //    ATStackAlignmentLastBaseline,
 } ATStackAlignment;
-
-typedef enum ATStackDistribution : NSInteger {
-    ATStackDistributionFill = 0,
-    ATStackDistributionFillEqually,
-//    ATStackDistributionFillCentering,
-//    ATStackDistributionEqualSpacing,
-//    ATStackDistributionEqualCentering,
-} ATStackDistribution;
-
 
 
 typedef enum ATStackViewPosition: NSUInteger {
@@ -63,17 +55,19 @@ typedef enum ATStackViewPosition: NSUInteger {
 
 @property(nonatomic, readonly, assign) ATStackConstraintAxis axis;
 
-@property(nonatomic, readwrite, assign) ATStackDistribution distribution;
-
 @property(nonatomic, readwrite, assign) ATStackAlignment alignment;
 
 @property(nonatomic, readwrite, assign) CGFloat spacing;
 
 @property(nonatomic, readonly, assign) CGRect frame;
 
--(void)addArrangedSubview:(UIView*)view;
+-(UIView*)addArrangedSubview:(UIView*)view;
 
--(void)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position;
+-(UIView*)addArrangedSubviewCenter:(UIView*)view;
+
+-(UIView*)addArrangedSubviewTail:(UIView*)view;
+
+-(UIView*)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position;
 
 -(void)addSpacing:(CGFloat)spacing;
 
@@ -81,6 +75,7 @@ typedef enum ATStackViewPosition: NSUInteger {
 
 -(void)layoutFrame;
 
+-(void)removeArrangedSubview:(UIView*)view;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ATStack()
 
+@property(nonatomic, assign) BOOL isNeedLayout;
+
 - (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset;
 
 -(void)layoutHeadFrames;
@@ -20,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)layoutTailFrames;
 
--(void)layoutEqualFrame;
 
 @end
 

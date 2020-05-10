@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ATStack.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ATStackInfo : NSObject
@@ -20,11 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) CGFloat space;
 
+@property(nonatomic, assign) CGFloat flex;
+
+@property(nonatomic, assign) ATStackAlignment alignment;
+
 //隐藏元素，同时改变其他元素的位置
 @property(nonatomic, assign) BOOL hidden;
 
 
 @property(nonatomic, strong) UIView *separateLine;
+
 
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "ATStackInfo.h"
-
 @implementation ATStackInfo
 
 - (instancetype)init
@@ -19,6 +18,8 @@
         self.isFill = false;
         self.space = 0;
         self.hidden = false;
+        self.flex = 0;
+        self.alignment = ATStackAlignmentAuto;
     }
     return self;
 }

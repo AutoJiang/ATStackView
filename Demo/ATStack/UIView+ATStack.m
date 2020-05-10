@@ -35,6 +35,13 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return stack;
 }
 
+-(ATStack *)superStack{
+    if (self.superview && self.superview.stack) {
+        return self.superview.stack;
+    }
+    return nil;
+}
+
 -(ATVerStack *)getStackVer{
     return [self getStackVerWithInset:UIEdgeInsetsZero];
 }
@@ -51,61 +58,98 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return [[ATHorStack alloc] initWithView:self inset:inset];
 }
 
--(ATHorStack*)getStackHorEqual{
-    return [self getStackHorEqualWithInset:UIEdgeInsetsZero];
-}
-
--(ATHorStack *)getStackHorEqualWithInset:(UIEdgeInsets)inset{
-    ATHorStack *stack = [[ATHorStack alloc] initWithView:self inset:inset];
-    stack.distribution = ATStackDistributionFillEqually;
-    return stack;
-}
-
--(ATVerStack *)getStackVerEqual{
-    return [self getStackVerEqualWithInset:UIEdgeInsetsZero];
-}
-
--(ATVerStack *)getStackVerEqualWithInset:(UIEdgeInsets)inset{
-    ATVerStack *stack = [[ATVerStack alloc] initWithView:self inset:inset];
-    stack.distribution = ATStackDistributionFillEqually;
-    return stack;
-}
-
 -(UIView *)addLineSeparate{
-    return [self addLineSeparateWithLelfPadding:0];
+    return [self addLineSeparateWithLelfPadding:0 rightPadding:0];
 }
 
--(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding{
-    
-    UIView *separateLine =[[UIView alloc]initWithFrame:CGRectMake(leftPadding, 0, 0, 1.0/[UIScreen mainScreen].scale)];
+-(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding rightPadding: (CGFloat)rightPadding{
+    UIView *separateLine =[[UIView alloc]initWithFrame:CGRectMake(leftPadding, rightPadding, 0, 1.0/[UIScreen mainScreen].scale)];
     separateLine.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.info.separateLine = separateLine;
     return separateLine;
 }
 
--(void)setAt_hidden:(BOOL)hidden{
+-(UIView *)addLineSeparateWithRightPadding:(CGFloat)rightPadding{
+    return [self addLineSeparateWithLelfPadding:0 rightPadding:rightPadding];
+}
+
+-(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding{
+    return [self addLineSeparateWithLelfPadding:leftPadding rightPadding:0];
+}
+
+-(UIView*)at_makeFlexBox:(void(^)(ATStackFlexBoxMaker *))block{
+    ATStackFlexBoxMaker *maker = [[ATStackFlexBoxMaker alloc] initWithView:self];
+    block(maker);
+    return [self setStackNeedLayout];
+}
+
+-(UIView *)setAt_hidden:(BOOL)hidden{
     self.hidden = hidden;
     self.info.hidden = hidden;
+    return [self setStackNeedLayout];
 }
 
 -(BOOL)at_hidden{
     return self.info.hidden;
 }
 
--(void)setAt_width:(CGFloat)width{
+-(UIView *)setAt_width:(CGFloat)width{
     self.info.width = width;
+    return [self setStackNeedLayout];
 }
 
 -(CGFloat)at_width{
     return self.info.width;
 }
 
--(void)setAt_height:(CGFloat)height{
+-(UIView *)setAt_height:(CGFloat)height{
     self.info.height = height;
+    return [self setStackNeedLayout];
 }
 
 -(CGFloat)at_height{
     return self.info.height;
+}
+
+-(UIView*)setAt_flex:(CGFloat)flex{
+    self.info.flex = flex;
+    return [self setStackNeedLayout];
+}
+
+-(CGFloat)at_flex{
+    return self.info.flex;
+}
+
+-(UIView*)setAt_space:(CGFloat)space{
+    self.info.space = space;
+    return [self setStackNeedLayout];
+}
+
+-(CGFloat)at_space{
+    return self.info.space;
+}
+
+-(UIView*)setAt_isFill:(BOOL)isFill{
+    self.info.isFill = isFill;
+    return [self setStackNeedLayout];
+}
+
+-(BOOL)at_isFill{
+    return self.info.isFill;
+}
+
+-(UIView*)setAt_alignment:(ATStackAlignment)alignment{
+    self.info.alignment = alignment;
+    return [self setStackNeedLayout];
+}
+
+-(UIView *)setStackNeedLayout{
+    self.superview.stack.isNeedLayout = true;
+    return self;
+}
+
+-(ATStackAlignment)at_alignment{
+    return self.info.alignment;
 }
 
 @end

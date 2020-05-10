@@ -11,10 +11,11 @@
 #import "ATHorStack.h"
 #import "ATVerStack.h"
 #import "ATStackInfo.h"
+#import "ATStackFlexBoxMaker.h"
 NS_ASSUME_NONNULL_BEGIN
+@class ATStackFlexBoxMaker;
 
 @interface UIView(ATStack)
-
 
 //快速为view添加一个Stack，返回ATVerStack
 
@@ -24,42 +25,57 @@ NS_ASSUME_NONNULL_BEGIN
 /**快速创建一个水平方向、子控件从左到右布局的栈*/
 -(ATHorStack *)getStackHor;
 
-/**快速创建一个水平方向、子控件均分的栈*/
--(ATHorStack *)getStackHorEqual;
-
-/**快速创建一个垂直方向、子控件均分的栈*/
--(ATVerStack *)getStackVerEqual;
-
 //inset代表内间距
 -(ATVerStack *)getStackVerWithInset:(UIEdgeInsets)inset;
 
 -(ATHorStack *)getStackHorWithInset:(UIEdgeInsets)inset;
 
--(ATHorStack *)getStackHorEqualWithInset:(UIEdgeInsets)inset;
-
--(ATVerStack *)getStackVerEqualWithInset:(UIEdgeInsets)inset;
-
 //添加分割线
 -(UIView *)addLineSeparate;
 //返回的分割线可自定义颜色和高度
+-(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding rightPadding: (CGFloat)rightPadding;
+
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
-//隐藏元素，同时改变其他元素的位置
--(void)setAt_hidden:(BOOL)hidden;
-
--(BOOL)at_hidden;
-
--(void)setAt_width:(CGFloat)width;
-
--(CGFloat)at_width;
-
--(void)setAt_height:(CGFloat)height;
-
--(CGFloat)at_height;
+-(UIView *)addLineSeparateWithRightPadding:(CGFloat)rightPadding;
 
 @property (nonatomic, strong) ATStack *stack;
 
 @property (nonatomic, readonly, strong) ATStackInfo *info;
+
+@property (nonatomic, readonly, weak) ATStack *superStack;
+
+-(UIView*)at_makeFlexBox:(void(^)(ATStackFlexBoxMaker *make))block;
+
+-(UIView *)setAt_hidden:(BOOL)hidden;
+
+-(BOOL)at_hidden;
+
+-(UIView*)setAt_width:(CGFloat)width;
+
+-(CGFloat)at_width;
+
+-(UIView*)setAt_height:(CGFloat)height;
+
+-(CGFloat)at_height;
+
+-(UIView*)setAt_flex:(CGFloat)flex;
+
+-(CGFloat)at_flex;
+
+-(UIView*)setAt_space:(CGFloat)space;
+
+-(CGFloat)at_space;
+
+-(UIView*)setAt_isFill:(BOOL)isFill;
+
+-(BOOL)at_isFill;
+
+-(UIView*)setAt_alignment:(ATStackAlignment)alignment;
+
+-(ATStackAlignment)at_alignment;
+
+-(UIView*)setStackNeedLayout;
 
 @end
 

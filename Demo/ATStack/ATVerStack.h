@@ -12,14 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ATVerStack : ATStack
 
--(void)addArrangedSubview: (UIView*)view height:(CGFloat)height;
-
--(void)addArrangedSubview: (UIView*)view height:(CGFloat)height isFill:(BOOL)isFill;
-
--(void)addArrangedSubview: (UIView*)view isFill:(Boolean)isFill;
-
--(void)addArrangedSubview:(UIView*)view height:(CGFloat)height isFill:(BOOL)isFill position:(ATStackViewPosition)position;
-
 @end
 
 NS_ASSUME_NONNULL_END

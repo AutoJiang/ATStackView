@@ -9,11 +9,28 @@
 #import "UIView+ATStack.h"
 #import "ATStack+Private.h"
 
+static NSString *kATStackRunLoopBeforeWaiting = @"kATStackRunLoopBeforeWaiting";
 @interface ATStack()
 
+@property(nonatomic, assign) CFRunLoopObserverCallBack block;
 @end
 
 @implementation ATStack
+
++ (void)initialize
+{
+    if (self == [ATStack class]) {
+        CFRunLoopRef runloop = CFRunLoopGetMain();
+        CFRunLoopObserverRef observer;
+        observer = CFRunLoopObserverCreate(CFAllocatorGetDefault(),
+                                           kCFRunLoopBeforeWaiting | kCFRunLoopExit,
+                                           true,      // repeat
+                                           0,  //0xFFFFFF after CATransaction(2000000)
+                                           &runLoopObserverCallback, NULL);
+        CFRunLoopAddObserver(runloop, observer, kCFRunLoopCommonModes);
+        CFRelease(observer);
+    }
+}
 
 - (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset
 {
@@ -25,11 +42,26 @@
         self->arrangedSubviewsCenter = [[NSMutableArray alloc] init];
         self->arrangedSubviewsTail = [[NSMutableArray alloc] init];
         view.stack = self;
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(runLoopBeforeWaiting) name:kATStackRunLoopBeforeWaiting object:nil];
     }
     return self;
 }
 
--(void)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position{
+static void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+    [NSNotificationCenter.defaultCenter postNotificationName:kATStackRunLoopBeforeWaiting object:nil];
+}
+
+-(void)dealloc{
+    [NSNotificationCenter.defaultCenter removeObserver:self name:kATStackRunLoopBeforeWaiting object:nil];
+}
+
+-(void)runLoopBeforeWaiting{
+    if (self.isNeedLayout) {
+        [self layoutFrame];
+    }
+}
+
+-(UIView*)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position{
     switch (position) {
         case ATStackViewPositionHead:
             [self->arrangedSubviewsHead addObject:view];
@@ -43,10 +75,21 @@
         default:
             break;
     };
+    [self.view addSubview:view];
+    self.isNeedLayout = true;
+    return view;
 }
 
--(void)addArrangedSubview:(UIView*)view{
-    [self addArrangedSubview:view position:ATStackViewPositionHead];
+-(UIView*)addArrangedSubview:(UIView*)view{
+    return [self addArrangedSubview:view position:ATStackViewPositionHead];
+}
+
+-(UIView*)addArrangedSubviewCenter:(UIView*)view{
+    return [self addArrangedSubview:view position:ATStackViewPositionCenter];
+}
+
+-(UIView*)addArrangedSubviewTail:(UIView*)view{
+    return [self addArrangedSubview:view position:ATStackViewPositionTail];
 }
 
 -(void)addSpacing:(CGFloat)spacing{
@@ -65,34 +108,45 @@
     if(v){
         v.info.space = spacing;
     }
+    self.isNeedLayout = true;
+}
+
+-(void)removeArrangedSubview:(UIView*)view{
+    [self->arrangedSubviewsHead removeObject:view];
+    [self->arrangedSubviewsCenter removeObject:view];
+    [self->arrangedSubviewsTail removeObject:view];
+    for (UIView *subView in self.view.subviews) {
+        if ([subView isEqual:view]) {
+            return [view removeFromSuperview];
+        }
+    }
+    self.isNeedLayout = true;
 }
 
 -(void)layoutFrame{
+    self.isNeedLayout = false;
     if(self->arrangedSubviewsHead.count <= 0 && self->arrangedSubviewsCenter.count <= 0 && self->arrangedSubviewsTail.count <= 0){
         [self addSeparateLine];
         return;
     }
-    if (self.distribution == ATStackDistributionFill) {
-        if(self->arrangedSubviewsHead.count > 0){
-            [self layoutHeadFrames];
-        }
-        if(self->arrangedSubviewsCenter.count > 0){
-            [self layoutCenterFrames];
-        }
-        if(self->arrangedSubviewsTail.count > 0){
-            [self layoutTailFrames];
-        }
-    }else if (self.distribution == ATStackDistributionFillEqually){
-        [self layoutEqualFrame];
+    if(self->arrangedSubviewsHead.count > 0){
+        [self layoutHeadFrames];
+    }
+    if(self->arrangedSubviewsCenter.count > 0){
+        [self layoutCenterFrames];
+    }
+    if(self->arrangedSubviewsTail.count > 0){
+        [self layoutTailFrames];
     }
     [self addSeparateLine];
+    
 }
 
 -(void)addSeparateLine{
     if (self.view.info.separateLine) {
         CGFloat x = self.view.info.separateLine.frame.origin.x;
         CGFloat y = self.view.frame.size.height - self.view.info.separateLine.frame.size.height;
-        CGFloat w = self.view.frame.size.width - x;
+        CGFloat w = self.view.frame.size.width - x - self.view.info.separateLine.frame.origin.y;
         CGFloat h = self.view.info.separateLine.frame.size.height;
         self.view.info.separateLine.frame = CGRectMake(x, y, w, h);
         [self.view addSubview: self.view.info.separateLine];
@@ -119,10 +173,5 @@
 -(void)layoutTailFrames{
     
 }
-
--(void)layoutEqualFrame{
-    
-}
-
 
 @end

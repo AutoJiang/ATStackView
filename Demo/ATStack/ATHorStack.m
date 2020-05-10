@@ -18,37 +18,47 @@
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisHorizontal] forKey:@"axis"];
         self.alignment = ATStackAlignmentLeading;
-        self.distribution = ATStackDistributionFill;
     }
     return self;
-}
-
--(void)addArrangedSubview:(UIView*)view width:(CGFloat)width{
-    [self addArrangedSubview:view width:width isFill:false position:ATStackViewPositionHead];
-}
-
-
--(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill{
-    [self addArrangedSubview:view width:width isFill:isFill position:ATStackViewPositionHead];
-}
-
--(void)addArrangedSubview:(UIView*)view isFill:(BOOL)isFill{
-    [self addArrangedSubview:view width:0 isFill:isFill position:ATStackViewPositionHead];
-}
-
--(void)addArrangedSubview:(UIView*)view width:(CGFloat)width isFill:(BOOL)isFill position:(ATStackViewPosition)position{
-    [self addArrangedSubview:view position:position];
-    view.info.width = width;
-    view.info.isFill = isFill;
 }
 
 -(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
     CGFloat height = self.frame.size.height;
     CGFloat x = inset.left;
+    
+    CGFloat sum = 0;
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
         if(v.at_hidden) continue;
         [v sizeToFit];
+        sum += v.info.flex;
+    }
+    if (sum > 0 ) {
+        CGFloat remain = self.frame.size.width;
+        for (int i = 0; i < arrangedSubviews.count; i++) {
+            UIView *v = arrangedSubviews[i];
+            if(v.at_hidden) continue;
+            if (v.info.flex > 0) {
+                remain -= self.spacing + v.info.space;
+                continue;
+            }
+            CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
+            remain -= self.spacing + w + v.info.space;
+        }
+        if (remain > 0) {
+            for (int i = 0; i < arrangedSubviews.count; i++) {
+                UIView *v = arrangedSubviews[i];
+                if(v.at_hidden) continue;
+                if (v.info.flex > 0) {
+                    v.info.width = remain * v.info.flex/sum;
+                }
+            }
+        }
+    }
+    
+    for (int i = 0; i < arrangedSubviews.count; i++) {
+        UIView *v = arrangedSubviews[i];
+        if(v.at_hidden) continue;
         CGFloat h = v.info.height > 0 ? v.info.height: v.frame.size.height;
         CGFloat y = inset.top;
         CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
@@ -56,18 +66,31 @@
             y = inset.top;
             h = height;
         }else{
-            if (self.alignment == ATStackAlignmentLeading) {
+            if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentLeading) ||
+                (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentLeading)){
                 y = inset.top;
-            }else if(self.alignment == ATStackAlignmentCenter){
-                y = (height - h) / 2.0;
-            }else if (self.alignment == ATStackViewPositionTail){
-                y = height - h;
+            }else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentCenter) ||
+                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentCenter)){
+                y = (height - h) / 2.0 + inset.top;
+            }else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentTrailing) ||
+                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentTrailing)){
+                y = height - h + inset.top;
             }
         }
         v.frame = CGRectMake(x, y, w, h);
-        [self.view addSubview:v];
-        x += self.spacing + w + v.info.space;
+        if ([self.view isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView*)self.view).contentSize = CGSizeMake(CGRectGetMaxX(v.frame) + self.spacing + v.info.space, CGRectGetMaxY(v.frame) + self.spacing + v.info.space);
+        }else{
+            if (CGRectGetMaxY(v.frame) > self.view.frame.size.height  && self.view.info.height == 0) {
+                self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, CGRectGetMaxY(v.frame));
+            }
+            if (CGRectGetMaxX(v.frame) + self.spacing + v.info.space  > self.view.frame.size.width  && self.view.info.width == 0) {
+                self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, CGRectGetMaxX(v.frame) + self.spacing + v.info.space, self.view.frame.size.height);
+            }
+        }
+
         [v.stack layoutFrame];
+        x += self.spacing + v.frame.size.width + v.info.space;
     }
     return x;
 }
@@ -84,7 +107,7 @@
 
 -(void)layoutTailFrames{
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
-    CGFloat x = self.frame.size.width - length;
+    CGFloat x = self.frame.size.width - length + inset.left;
     [self moveX:x arrangedSubviews:self->arrangedSubviewsTail];
 }
 
@@ -93,40 +116,4 @@
         v.frame = CGRectMake(x + v.frame.origin.x, v.frame.origin.y, v.frame.size.width, v.frame.size.height);
     }
 }
-
--(void)layoutEqualFrame{
-    long count = 0;
-    for (UIView *v in self->arrangedSubviewsHead) {
-        if(!v.at_hidden) count++;
-    }
-    CGFloat height = self.frame.size.height;
-    CGFloat x = inset.left;
-    CGFloat spaceSum = (count - 1)*self.spacing;
-    CGFloat w =  (self.frame.size.width - spaceSum)/count;
-    
-    for (int i = 0; i < self->arrangedSubviewsHead.count; i++) {
-        UIView *v = self->arrangedSubviewsHead[i];
-        if(v.at_hidden)  continue;
-        [v sizeToFit];
-        CGFloat h = v.info.height > 0 ? v.info.height: v.frame.size.height;
-        CGFloat y = inset.top;
-        if(v.info.isFill){
-            y = inset.top;
-            h = height;
-        }else{
-            if (self.alignment == ATStackAlignmentLeading) {
-                y = inset.top;
-            }else if(self.alignment == ATStackAlignmentCenter){
-                y = (height - h) / 2.0;
-            }else if (self.alignment == ATStackViewPositionTail){
-                y = height - h;
-            }
-        }
-        v.frame = CGRectMake(x, y, w, h);
-        [self.view addSubview:v];
-        x += self.spacing + w;
-        [v.stack layoutFrame];
-    }
-}
-
 @end
