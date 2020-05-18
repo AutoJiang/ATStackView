@@ -32,13 +32,17 @@
     stack.spacing = 10;
     UILabel *title = [UILabel new];
     title.text = @"ATVerStack";
-    [stack addArrangedSubview:title height:30];
+    [[stack addArrangedSubview:title] setAt_height:30];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view2 height:40 isFill:true];
+    [[stack addArrangedSubview:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(40).isFill(true);
+    }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view3 height:50 isFill:true];
+    [[stack addArrangedSubview:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(50).isFill(true);
+    }];
     UILabel *label1 = [UILabel new];
     label1.text = @"label1 ";
     label1.textColor = RandomColor;
@@ -53,22 +57,33 @@
     label2.textAlignment = NSTextAlignmentCenter;
     self.label2 = label2;
     //label2 不设置高度,isFill = true， 宽度拉伸填满"
-    [stack addArrangedSubview:label2 isFill:true];
+    [[stack addArrangedSubview:label2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.isFill(true);
+    }];
     UILabel *label3 = [UILabel new];
     label3.text = @"label3";
     label3.textColor = RandomColor;
     label3.backgroundColor = RandomColor;
-
-    [stack addArrangedSubview:label3 height:50 isFill:false];
+    [[stack addArrangedSubview:label3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(50).isFill(false);
+    }];
     UILabel *title2 = [UILabel new];
     title2.text = @"ATHorView";
-    [stack addArrangedSubview:title2 height:30];
-    
-    [stack addArrangedSubview:[self getRowView] height:80 isFill:true];
-    [stack addArrangedSubview:[self getEqualVerView] height:120 isFill:true];
-    [stack addArrangedSubview:[self getControlsView2] height:30 isFill:true position:ATStackViewPositionTail];
-    [stack addArrangedSubview:[self getControlsView] height:150 isFill:true position:ATStackViewPositionTail];
-    [stack layoutFrame];
+    [[stack addArrangedSubview:title2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(30);
+    }];
+    [[stack addArrangedSubview:[self getRowView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(80).isFill(true);
+    }];
+    [[stack addArrangedSubview:[self getEqualVerView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(120).isFill(true);
+    }];
+    [[stack addArrangedSubviewTail:[self getControlsView2]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+          make.height(30).isFill(true);
+    }];
+    [[stack addArrangedSubviewTail:[self getControlsView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+            make.height(150).isFill(true);
+      }];
     self.verStack = stack;
 }
 
@@ -78,13 +93,20 @@
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view1 width:50 isFill:true];
+    [[stack addArrangedSubviewTail:view1] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.width(50).isFill(true);
+    }];
+    
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view2 width:60 isFill:true];
+    [[stack addArrangedSubviewTail:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.width(60).isFill(true);
+    }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view3 width:50 isFill:true];
+    [[stack addArrangedSubviewTail:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.width(50).isFill(true);
+    }];
     UILabel *label1 = [UILabel new];
     label1.text = @"label4";
     label1.textColor = RandomColor;
@@ -104,75 +126,82 @@
     label3.textColor = RandomColor;
     label3.backgroundColor = RandomColor;
     //label3 设置高度，isFill = false，高度自定义，宽度自适应"
-    [stack addArrangedSubview:label3 width:50 isFill:true];
+    [[stack addArrangedSubviewTail:label3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.width(50).isFill(true);
+    }];
     self.horStack = stack;
     return rowView;
 }
 
 -(UIView*)getControlsView{
     UIView *view = [UIView new];
-    ATHorStack *stack = [view getStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    ATHorStack *stack = [view getStackHorWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 3.0;
     UIButton *button1 = [UIButton new];
     [button1 setTitle:@"Leading" forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button1.backgroundColor = [UIColor blueColor];
     [button1 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
-    [stack addArrangedSubview:button1];
+    [[stack addArrangedSubview:button1] setAt_flex:1];
     button1.tag = ATStackAlignmentLeading;
     UIButton *button2 = [UIButton new];
     [button2 setTitle:@"Center" forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button2.backgroundColor = [UIColor blueColor] ;
     [button2 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
-    [stack addArrangedSubview:button2];
+    [[stack addArrangedSubview:button2] setAt_flex:1];
     button2.tag = ATStackAlignmentCenter;
     UIButton *button3 = [UIButton new];
     [button3 setTitle:@"Trailing" forState:UIControlStateNormal];
     [button3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button3.backgroundColor = [UIColor blueColor] ;
     [button3 addTarget:self action:@selector(selectedAction:) forControlEvents:UIControlEventTouchUpInside];
-    [stack addArrangedSubview:button3];
+    [[stack addArrangedSubview:button3] setAt_flex:1];
     button3.tag = ATStackAlignmentTrailing;
     return view;
 }
 
 -(UIView*)getControlsView2{
     UIView *view = [UIView new];
-    ATHorStack *stack = [view getStackHorEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    ATHorStack *stack = [view getStackHorWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 3.0;
     UIButton *button1 = [UIButton new];
     [button1 setTitle:@"show" forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button1.backgroundColor = [UIColor blueColor];
     [button1 addTarget:self action:@selector(show:) forControlEvents:UIControlEventTouchUpInside];
-    [stack addArrangedSubview:button1];
+    [[stack addArrangedSubview:button1] setAt_flex:1];
     button1.tag = ATStackAlignmentTrailing;
     UIButton *button2 = [UIButton new];
     [button2 setTitle:@"hidden" forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button2.backgroundColor = [UIColor blueColor] ;
     [button2 addTarget:self action:@selector(hidden:) forControlEvents:UIControlEventTouchUpInside];
-    [stack addArrangedSubview:button2];
+    [[stack addArrangedSubview:button2] setAt_flex:1];
     button2.tag = ATStackAlignmentCenter;
     return view;
 }
 
 -(UIView*)getEqualVerView{
     UIView *view = [UIView new];
-    ATVerStack *stack = [view getStackVerEqualWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    ATVerStack *stack = [view getStackVerWithInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view1 height:50 isFill:true];
-    [stack addSpacing:30];
+    [[stack addArrangedSubview:view1] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(50).isFill(true).space(30);
+    }];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
     self.view2 = view2;
-    [stack addArrangedSubview:view2 height:60 isFill:true];
+    [[stack addArrangedSubview:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(60).isFill(true);
+    }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
-    [stack addArrangedSubview:view3 height:50 isFill:true];
+    [[stack addArrangedSubview:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(50).isFill(true);
+    }];
     return view;
 }
 

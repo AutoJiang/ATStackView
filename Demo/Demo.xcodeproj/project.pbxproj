@@ -12,6 +12,7 @@
 		C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E80B2371C7E300626CAB /* ATHorStack.m */; };
 		C961E8122371D4EF00626CAB /* ATVerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8112371D4EF00626CAB /* ATVerStack.m */; };
 		C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8142372F99B00626CAB /* ATStackInfo.m */; };
+		C98F86E82472FD2E0069BA64 /* ATStackFlexBoxMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */; };
 		C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DB215F45A50024ADB2 /* AppDelegate.m */; };
 		C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DE215F45A50024ADB2 /* ViewController.m */; };
 		C998B6E2215F45A50024ADB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C998B6E0215F45A50024ADB2 /* Main.storyboard */; };
@@ -52,6 +53,8 @@
 		C961E8112371D4EF00626CAB /* ATVerStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATVerStack.m; sourceTree = "<group>"; };
 		C961E8132372F99B00626CAB /* ATStackInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATStackInfo.h; sourceTree = "<group>"; };
 		C961E8142372F99B00626CAB /* ATStackInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATStackInfo.m; sourceTree = "<group>"; };
+		C98F86E62472FD2E0069BA64 /* ATStackFlexBoxMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStackFlexBoxMaker.h; sourceTree = "<group>"; };
+		C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATStackFlexBoxMaker.m; sourceTree = "<group>"; };
 		C998B6D7215F45A50024ADB2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C998B6DA215F45A50024ADB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C998B6DB215F45A50024ADB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				C961E8132372F99B00626CAB /* ATStackInfo.h */,
 				C961E8142372F99B00626CAB /* ATStackInfo.m */,
 				C9E04F8B23785C10001F9AC0 /* ATStack+Private.h */,
+				C98F86E62472FD2E0069BA64 /* ATStackFlexBoxMaker.h */,
+				C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */,
 			);
 			path = ATStack;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */,
 				C961E8062370748A00626CAB /* ATStack.m in Sources */,
 				C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */,
+				C98F86E82472FD2E0069BA64 /* ATStackFlexBoxMaker.m in Sources */,
 				C998B6EA215F45A50024ADB2 /* main.m in Sources */,
 				C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */,
 				C961E809237076F700626CAB /* UIView+ATStack.m in Sources */,

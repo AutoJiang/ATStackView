@@ -24,26 +24,28 @@
     [self.view addSubview:scrollView];
     ATVerStack *stack = [scrollView getStackVer];
     [stack addSpacing:10];
-    [stack addArrangedSubview:[self createCellWithTitle:@"朋友圈" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
+    [stack addArrangedSubview:[self createCellWithTitle:@"朋友圈" leftImageName:@"shareMoment" isLast:true]];
     [stack addSpacing:14];
-    [stack addArrangedSubview:[self createCellWithTitle:@"扫一扫" leftImageName:@"shareMoment" isLast:false] height:40 isFill:true];
-    [stack addArrangedSubview:[self createCellWithTitle:@"摇一摇" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
+    [stack addArrangedSubview:[self createCellWithTitle:@"扫一扫" leftImageName:@"shareMoment" isLast:false]];
+    [stack addArrangedSubview:[self createCellWithTitle:@"摇一摇" leftImageName:@"shareMoment" isLast:true]];
     [stack addSpacing:14];
-    [stack addArrangedSubview:[self createCellWithTitle:@"看一看" leftImageName:@"shareMoment" isLast:false] height:40 isFill:true];
-    [stack addArrangedSubview:[self createCellWithTitle:@"搜一搜" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
+    [stack addArrangedSubview:[self createCellWithTitle:@"看一看" leftImageName:@"shareMoment" isLast:false]];
+    [stack addArrangedSubview:[self createCellWithTitle:@"搜一搜" leftImageName:@"shareMoment" isLast:true]];
     [stack addSpacing:14];
-    [stack addArrangedSubview:[self createCellWithTitle:@"附近的人" leftImageName:@"shareMoment" isLast:false] height:40 isFill:true];
-    [stack addArrangedSubview:[self createCellWithTitle:@"漂流瓶" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
+    [stack addArrangedSubview:[self createCellWithTitle:@"附近的人" leftImageName:@"shareMoment" isLast:false]];
+    [stack addArrangedSubview:[self createCellWithTitle:@"漂流瓶" leftImageName:@"shareMoment" isLast:true]];
     [stack addSpacing:14];
-    [stack addArrangedSubview:[self createCellWithTitle:@"购物" leftImageName:@"shareMoment" isLast:false] height:40 isFill:true];
-    [stack addArrangedSubview:[self createCellWithTitle:@"游戏" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];
+    [stack addArrangedSubview:[self createCellWithTitle:@"购物" leftImageName:@"shareMoment" isLast:false]];
+    [stack addArrangedSubview:[self createCellWithTitle:@"游戏" leftImageName:@"shareMoment" isLast:true]];
     [stack addSpacing:14];
-    [stack addArrangedSubview:[self createCellWithTitle:@"小程序" leftImageName:@"shareMoment" isLast:true] height:40 isFill:true];;
-    [stack layoutFrame];
+    [stack addArrangedSubview:[self createCellWithTitle:@"小程序" leftImageName:@"shareMoment" isLast:true]];;
 }
 
 -(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
+    [control at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+        make.height(40).isFill(1);
+    }];
     control.backgroundColor = [UIColor whiteColor];
     ATHorStack *stack = [control getStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 0)];
     stack.spacing = 10;
