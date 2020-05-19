@@ -44,7 +44,7 @@
 -(UIView*)createCellWithTitle:(NSString*)title leftImageName:(NSString*)imageName isLast:(BOOL)isLast{
     UIControl *control = [UIControl new];
     [control at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(40).isFill(1);
+        make.height(40).multipliedBy(1);
     }];
     control.backgroundColor = [UIColor whiteColor];
     ATHorStack *stack = [control getStackHorWithInset:UIEdgeInsetsMake(0, 12, 0, 0)];

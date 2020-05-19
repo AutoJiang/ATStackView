@@ -27,11 +27,11 @@
             UIView *view = [UIView new];
             view.backgroundColor = [UIColor redColor];
             [[horStack addArrangedSubview:view] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-                make.flex(1).isFill(true);
+                make.flex(1).multipliedBy(1);
             }];
         }
         [[stack addArrangedSubviewTail:view] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-            make.height(80).isFill(true);
+            make.height(80).multipliedBy(1);
         }];
     }
 }
