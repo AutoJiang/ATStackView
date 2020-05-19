@@ -36,12 +36,12 @@
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
     [[stack addArrangedSubview:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(40).isFill(true);
+        make.height(40).multipliedBy(1);
     }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
     [[stack addArrangedSubview:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(50).isFill(true);
+        make.height(50).multipliedBy(1);
     }];
     UILabel *label1 = [UILabel new];
     label1.text = @"label1 ";
@@ -58,14 +58,14 @@
     self.label2 = label2;
     //label2 不设置高度,isFill = true， 宽度拉伸填满"
     [[stack addArrangedSubview:label2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.isFill(true);
+        make.multipliedBy(1);
     }];
     UILabel *label3 = [UILabel new];
     label3.text = @"label3";
     label3.textColor = RandomColor;
     label3.backgroundColor = RandomColor;
     [[stack addArrangedSubview:label3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(50).isFill(false);
+        make.height(50).multipliedBy(1);
     }];
     UILabel *title2 = [UILabel new];
     title2.text = @"ATHorView";
@@ -73,16 +73,16 @@
         make.height(30);
     }];
     [[stack addArrangedSubview:[self getRowView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(80).isFill(true);
+        make.height(80).multipliedBy(1);
     }];
     [[stack addArrangedSubview:[self getEqualVerView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(120).isFill(true);
+        make.height(120).multipliedBy(1);
     }];
     [[stack addArrangedSubviewTail:[self getControlsView2]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-          make.height(30).isFill(true);
+          make.height(30).multipliedBy(1);
     }];
     [[stack addArrangedSubviewTail:[self getControlsView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-            make.height(150).isFill(true);
+            make.height(150).multipliedBy(1);
       }];
     self.verStack = stack;
 }
@@ -94,18 +94,18 @@
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
     [[stack addArrangedSubviewTail:view1] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.width(50).isFill(true);
+        make.width(50).multipliedBy(1);
     }];
     
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
     [[stack addArrangedSubviewTail:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.width(60).isFill(true);
+        make.width(60).multipliedBy(1);
     }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
     [[stack addArrangedSubviewTail:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.width(50).isFill(true);
+        make.width(50).multipliedBy(1);
     }];
     UILabel *label1 = [UILabel new];
     label1.text = @"label4";
@@ -127,7 +127,7 @@
     label3.backgroundColor = RandomColor;
     //label3 设置高度，isFill = false，高度自定义，宽度自适应"
     [[stack addArrangedSubviewTail:label3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.width(50).isFill(true);
+        make.width(50).multipliedBy(1);
     }];
     self.horStack = stack;
     return rowView;
@@ -189,18 +189,18 @@
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
     [[stack addArrangedSubview:view1] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(50).isFill(true).space(30);
+        make.height(50).multipliedBy(1).space(30);
     }];
     UIView *view2 = [UIView new];
     view2.backgroundColor = RandomColor;
     self.view2 = view2;
     [[stack addArrangedSubview:view2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(60).isFill(true);
+        make.height(60).multipliedBy(1);
     }];
     UIView *view3 = [UIView new];
     view3.backgroundColor = RandomColor;
     [[stack addArrangedSubview:view3] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(50).isFill(true);
+        make.height(50).multipliedBy(1);
     }];
     return view;
 }

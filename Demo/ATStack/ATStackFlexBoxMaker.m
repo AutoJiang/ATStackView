@@ -61,10 +61,10 @@
     return result;
 }
 
--(ATStackFlexBoxMaker *(^)(BOOL))isFill{
+-(ATStackFlexBoxMaker *(^)(CGFloat))multipliedBy{
     __weak typeof(self) wself = self;
-    ATStackFlexBoxMaker *(^result)(BOOL) = ^(BOOL value){
-        wself.view.info.isFill = value;
+    ATStackFlexBoxMaker *(^result)(CGFloat) = ^(CGFloat value){
+        wself.view.info.multipliedBy = value;
         return wself;
     };
     return result;

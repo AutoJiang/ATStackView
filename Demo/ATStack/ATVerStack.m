@@ -59,9 +59,9 @@
         CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
         CGFloat x = inset.left;
         CGFloat h = v.info.height > 0 ? v.info.height: v.frame.size.height;
-        if(v.info.isFill){
+        if(v.info.multipliedBy){
             x = inset.left;
-            w = width;
+            w = width*v.info.multipliedBy;
         }else{
             if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentLeading) ||
                 (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentLeading)){
