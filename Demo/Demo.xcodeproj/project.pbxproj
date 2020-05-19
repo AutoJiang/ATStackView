@@ -13,6 +13,7 @@
 		C961E8122371D4EF00626CAB /* ATVerStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8112371D4EF00626CAB /* ATVerStack.m */; };
 		C961E8152372F99B00626CAB /* ATStackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8142372F99B00626CAB /* ATStackInfo.m */; };
 		C98F86E82472FD2E0069BA64 /* ATStackFlexBoxMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */; };
+		C98F86EB2473038A0069BA64 /* ATItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98F86EA2473038A0069BA64 /* ATItemCollectionViewCell.m */; };
 		C998B6DC215F45A50024ADB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DB215F45A50024ADB2 /* AppDelegate.m */; };
 		C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C998B6DE215F45A50024ADB2 /* ViewController.m */; };
 		C998B6E2215F45A50024ADB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C998B6E0215F45A50024ADB2 /* Main.storyboard */; };
@@ -55,6 +56,8 @@
 		C961E8142372F99B00626CAB /* ATStackInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATStackInfo.m; sourceTree = "<group>"; };
 		C98F86E62472FD2E0069BA64 /* ATStackFlexBoxMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStackFlexBoxMaker.h; sourceTree = "<group>"; };
 		C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATStackFlexBoxMaker.m; sourceTree = "<group>"; };
+		C98F86E92473038A0069BA64 /* ATItemCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATItemCollectionViewCell.h; sourceTree = "<group>"; };
+		C98F86EA2473038A0069BA64 /* ATItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATItemCollectionViewCell.m; sourceTree = "<group>"; };
 		C998B6D7215F45A50024ADB2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C998B6DA215F45A50024ADB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C998B6DB215F45A50024ADB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				C998B71C215F49BD0024ADB2 /* FirstExampleViewController.m */,
 				C998B73F215F694C0024ADB2 /* SecondExampleViewController.h */,
 				C998B740215F694C0024ADB2 /* SecondExampleViewController.m */,
+				C98F86E92473038A0069BA64 /* ATItemCollectionViewCell.h */,
+				C98F86EA2473038A0069BA64 /* ATItemCollectionViewCell.m */,
 				C998B6DD215F45A50024ADB2 /* ViewController.h */,
 				C998B6DE215F45A50024ADB2 /* ViewController.m */,
 				C998B6E0215F45A50024ADB2 /* Main.storyboard */,
@@ -315,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98F86EB2473038A0069BA64 /* ATItemCollectionViewCell.m in Sources */,
 				C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */,
 				C961E8062370748A00626CAB /* ATStack.m in Sources */,
 				C998B71D215F49BD0024ADB2 /* FirstExampleViewController.m in Sources */,
