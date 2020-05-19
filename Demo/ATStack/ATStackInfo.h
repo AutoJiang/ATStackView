@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) CGFloat height;
 
-@property(nonatomic, assign) BOOL isFill;
+//相对于父视图的大小，取值0-1之间
+@property(nonatomic, assign) CGFloat multipliedBy;
 
 @property(nonatomic, assign) CGFloat space;
 

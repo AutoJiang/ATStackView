@@ -15,7 +15,7 @@
     if (self) {
         self.height = 0;
         self.width = 0;
-        self.isFill = false;
+        self.multipliedBy = 0;
         self.space = 0;
         self.hidden = false;
         self.flex = 0;

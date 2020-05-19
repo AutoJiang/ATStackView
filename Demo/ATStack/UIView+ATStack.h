@@ -67,9 +67,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(CGFloat)at_space;
 
--(UIView*)setAt_isFill:(BOOL)isFill;
+-(UIView*)setAt_multipliedBy:(CGFloat)multipliedBy;
 
--(BOOL)at_isFill;
+-(CGFloat)at_multipliedBy;
 
 -(UIView*)setAt_alignment:(ATStackAlignment)alignment;
 

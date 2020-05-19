@@ -129,13 +129,15 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
     return self.info.space;
 }
 
--(UIView*)setAt_isFill:(BOOL)isFill{
-    self.info.isFill = isFill;
+-(UIView*)setAt_multipliedBy:(CGFloat)multipliedBy{
+    multipliedBy = multipliedBy > 1 ? 1 : multipliedBy;
+    multipliedBy = multipliedBy < 1 ? 0 : multipliedBy;
+    self.info.multipliedBy = multipliedBy;
     return [self setStackNeedLayout];
 }
 
--(BOOL)at_isFill{
-    return self.info.isFill;
+-(CGFloat)at_multipliedBy{
+    return self.info.multipliedBy;
 }
 
 -(UIView*)setAt_alignment:(ATStackAlignment)alignment{
