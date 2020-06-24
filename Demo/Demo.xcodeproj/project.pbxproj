@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C955063224A330BB00B903B7 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C955063124A330BB00B903B7 /* MyFlowLayout.m */; };
 		C961E8062370748A00626CAB /* ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E8052370748A00626CAB /* ATStack.m */; };
 		C961E809237076F700626CAB /* UIView+ATStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E808237076F700626CAB /* UIView+ATStack.m */; };
 		C961E80C2371C7E300626CAB /* ATHorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C961E80B2371C7E300626CAB /* ATHorStack.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C955063024A330BB00B903B7 /* MyFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
+		C955063124A330BB00B903B7 /* MyFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
 		C961E8042370748A00626CAB /* ATStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATStack.h; sourceTree = "<group>"; };
 		C961E8052370748A00626CAB /* ATStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATStack.m; sourceTree = "<group>"; };
 		C961E807237076F700626CAB /* UIView+ATStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ATStack.h"; sourceTree = "<group>"; };
@@ -58,7 +61,7 @@
 		C98F86E72472FD2E0069BA64 /* ATStackFlexBoxMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATStackFlexBoxMaker.m; sourceTree = "<group>"; };
 		C98F86E92473038A0069BA64 /* ATItemCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATItemCollectionViewCell.h; sourceTree = "<group>"; };
 		C98F86EA2473038A0069BA64 /* ATItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATItemCollectionViewCell.m; sourceTree = "<group>"; };
-		C998B6D7215F45A50024ADB2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C998B6D7215F45A50024ADB2 /* Demo_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C998B6DA215F45A50024ADB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C998B6DB215F45A50024ADB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C998B6DD215F45A50024ADB2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -140,7 +143,7 @@
 		C998B6D8215F45A50024ADB2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C998B6D7215F45A50024ADB2 /* Demo.app */,
+				C998B6D7215F45A50024ADB2 /* Demo_v2.app */,
 				C998B6EF215F45A50024ADB2 /* DemoTests.xctest */,
 				C998B6FA215F45A50024ADB2 /* DemoUITests.xctest */,
 			);
@@ -156,6 +159,8 @@
 				C998B71C215F49BD0024ADB2 /* FirstExampleViewController.m */,
 				C998B73F215F694C0024ADB2 /* SecondExampleViewController.h */,
 				C998B740215F694C0024ADB2 /* SecondExampleViewController.m */,
+				C955063024A330BB00B903B7 /* MyFlowLayout.h */,
+				C955063124A330BB00B903B7 /* MyFlowLayout.m */,
 				C98F86E92473038A0069BA64 /* ATItemCollectionViewCell.h */,
 				C98F86EA2473038A0069BA64 /* ATItemCollectionViewCell.m */,
 				C998B6DD215F45A50024ADB2 /* ViewController.h */,
@@ -204,7 +209,7 @@
 			);
 			name = Demo;
 			productName = Demo;
-			productReference = C998B6D7215F45A50024ADB2 /* Demo.app */;
+			productReference = C998B6D7215F45A50024ADB2 /* Demo_v2.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C998B6EE215F45A50024ADB2 /* DemoTests */ = {
@@ -320,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C955063224A330BB00B903B7 /* MyFlowLayout.m in Sources */,
 				C98F86EB2473038A0069BA64 /* ATItemCollectionViewCell.m in Sources */,
 				C998B6DF215F45A50024ADB2 /* ViewController.m in Sources */,
 				C961E8062370748A00626CAB /* ATStack.m in Sources */,
@@ -495,10 +501,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JK88F6QSWM;
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.auto.Demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Demo_v2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -507,11 +515,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.auto.Demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Demo_v2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
