@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(ATStackFlexBoxMaker *(^)(CGFloat))multipliedBy;
 
 -(ATStackFlexBoxMaker *(^)(ATStackAlignment))alignment;
+
+-(ATStackFlexBoxMaker *(^)(BOOL))hidden;
 @end
 
 NS_ASSUME_NONNULL_END

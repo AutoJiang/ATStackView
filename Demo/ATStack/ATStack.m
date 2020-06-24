@@ -15,6 +15,10 @@ static NSString *kATStackRunLoopBeforeWaiting = @"kATStackRunLoopBeforeWaiting";
 @property(nonatomic, assign) CFRunLoopObserverCallBack block;
 @end
 
+@interface ATStack()<ATStackInfoDelegate>
+
+@end
+
 @implementation ATStack
 
 + (void)initialize
@@ -25,7 +29,7 @@ static NSString *kATStackRunLoopBeforeWaiting = @"kATStackRunLoopBeforeWaiting";
         observer = CFRunLoopObserverCreate(CFAllocatorGetDefault(),
                                            kCFRunLoopBeforeWaiting | kCFRunLoopExit,
                                            true,      // repeat
-                                           0,  //0xFFFFFF after CATransaction(2000000)
+                                           0,  //before CATransaction(2000000)
                                            &runLoopObserverCallback, NULL);
         CFRunLoopAddObserver(runloop, observer, kCFRunLoopCommonModes);
         CFRelease(observer);
@@ -42,6 +46,7 @@ static NSString *kATStackRunLoopBeforeWaiting = @"kATStackRunLoopBeforeWaiting";
         self->arrangedSubviewsCenter = [[NSMutableArray alloc] init];
         self->arrangedSubviewsTail = [[NSMutableArray alloc] init];
         view.stack = self;
+        view.info.delegate = self;
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(runLoopBeforeWaiting) name:kATStackRunLoopBeforeWaiting object:nil];
     }
     return self;
@@ -93,16 +98,16 @@ static void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
 }
 
 -(void)addSpacing:(CGFloat)spacing{
-    [self addSpacing:spacing postion:ATStackViewPositionHead];
+    [self addSpacing:spacing position:ATStackViewPositionHead];
 }
 
--(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion{
+-(void)addSpacing:(CGFloat)spacing position:(ATStackViewPosition)position{
     UIView *v;
-    if(postion == ATStackViewPositionHead){
+    if(position == ATStackViewPositionHead){
         v = [self->arrangedSubviewsHead lastObject];
-    }else if(postion == ATStackViewPositionCenter){
+    }else if(position == ATStackViewPositionCenter){
         v = [self->arrangedSubviewsCenter lastObject];
-    }else if(postion == ATStackViewPositionTail){
+    }else if(position == ATStackViewPositionTail){
         v = [self->arrangedSubviewsTail lastObject];
     }
     if(v){
@@ -119,6 +124,59 @@ static void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
         if ([subView isEqual:view]) {
             return [view removeFromSuperview];
         }
+    }
+    self.isNeedLayout = true;
+}
+
+-(void)removeLastObjectWithPositon:(ATStackViewPosition)position{
+    UIView *v;
+    if(position == ATStackViewPositionHead){
+        v = [self->arrangedSubviewsHead lastObject];
+    }else if(position == ATStackViewPositionCenter){
+        v = [self->arrangedSubviewsCenter lastObject];
+    }else if(position == ATStackViewPositionTail){
+        v = [self->arrangedSubviewsTail lastObject];
+    }
+    [self removeArrangedSubview:v];
+}
+
+-(void)removeFisrstObjectWithPositon:(ATStackViewPosition)position{
+    UIView *v;
+    if(position == ATStackViewPositionHead){
+        v = [self->arrangedSubviewsHead firstObject];
+    }else if(position == ATStackViewPositionCenter){
+        v = [self->arrangedSubviewsCenter firstObject];
+    }else if(position == ATStackViewPositionTail){
+        v = [self->arrangedSubviewsTail firstObject];
+    }
+    [self removeArrangedSubview:v];
+}
+
+-(void)removeobjectAtIndex:(NSUInteger)index positon:(ATStackViewPosition)position{
+    UIView *v;
+    if(position == ATStackViewPositionHead){
+        v = [self->arrangedSubviewsHead objectAtIndex:index];
+    }else if(position == ATStackViewPositionCenter){
+        v = [self->arrangedSubviewsCenter objectAtIndex:index];
+    }else if(position == ATStackViewPositionTail){
+        v = [self->arrangedSubviewsTail objectAtIndex:index];
+    }
+    [self removeArrangedSubview:v];
+}
+
+-(void)removeAll{
+    [self removeAllWithPositon:ATStackViewPositionHead];
+    [self removeAllWithPositon:ATStackViewPositionCenter];
+    [self removeAllWithPositon:ATStackViewPositionTail];
+}
+
+-(void)removeAllWithPositon:(ATStackViewPosition)position{
+    if(position == ATStackViewPositionHead){
+        [self->arrangedSubviewsHead removeAllObjects];
+    }else if(position == ATStackViewPositionCenter){
+        [self->arrangedSubviewsCenter removeAllObjects];
+    }else if(position == ATStackViewPositionTail){
+        [self->arrangedSubviewsTail removeAllObjects];
     }
     self.isNeedLayout = true;
 }
@@ -172,6 +230,12 @@ static void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
 
 -(void)layoutTailFrames{
     
+}
+
+#pragma mark - ATStackInfoDelegate
+
+-(void)stackInfoValueDidChange:(ATStackInfo *)info{
+    self.isNeedLayout = true;
 }
 
 @end

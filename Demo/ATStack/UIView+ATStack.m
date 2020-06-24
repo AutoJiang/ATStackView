@@ -64,7 +64,7 @@ static const void *kATStackInfoAssociatedKey = &kATStackInfoAssociatedKey;
 
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding rightPadding: (CGFloat)rightPadding{
     UIView *separateLine =[[UIView alloc]initWithFrame:CGRectMake(leftPadding, rightPadding, 0, 1.0/[UIScreen mainScreen].scale)];
-    separateLine.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    separateLine.backgroundColor = UIColor.groupTableViewBackgroundColor;
     self.info.separateLine = separateLine;
     return separateLine;
 }

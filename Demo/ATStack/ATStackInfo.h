@@ -11,6 +11,13 @@
 #import "ATStack.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@class ATStackInfo;
+@protocol ATStackInfoDelegate <NSObject>
+
+-(void)stackInfoValueDidChange:(ATStackInfo*)info;
+
+@end
+
 @interface ATStackInfo : NSObject
 
 @property(nonatomic, assign) CGFloat width;
@@ -29,10 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 //隐藏元素，同时改变其他元素的位置
 @property(nonatomic, assign) BOOL hidden;
 
-
 @property(nonatomic, strong) UIView *separateLine;
 
-
+@property(nonatomic, weak) id<ATStackInfoDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

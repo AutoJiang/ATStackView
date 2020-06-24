@@ -69,9 +69,9 @@
     }];
     UILabel *title2 = [UILabel new];
     title2.text = @"ATHorView";
-    [[stack addArrangedSubview:title2] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-        make.height(30);
-    }];
+    [stack addArrangedSubview:title2];
+    [title2 setAt_height:30];
+    
     [[stack addArrangedSubview:[self getRowView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
         make.height(80).multipliedBy(1);
     }];
@@ -79,11 +79,11 @@
         make.height(120).multipliedBy(1);
     }];
     [[stack addArrangedSubviewTail:[self getControlsView2]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-          make.height(30).multipliedBy(1);
+        make.height(30).multipliedBy(1);
     }];
     [[stack addArrangedSubviewTail:[self getControlsView]] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
-            make.height(150).multipliedBy(1);
-      }];
+        make.height(150).multipliedBy(1);
+    }];
     self.verStack = stack;
 }
 
@@ -93,7 +93,8 @@
     stack.spacing = 10;
     UIView *view1 = [UIView new];
     view1.backgroundColor = RandomColor;
-    [[stack addArrangedSubviewTail:view1] at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
+    [stack addArrangedSubviewTail:view1];
+    [view1 at_makeFlexBox:^(ATStackFlexBoxMaker * _Nonnull make) {
         make.width(50).multipliedBy(1);
     }];
     

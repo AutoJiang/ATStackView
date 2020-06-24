@@ -79,6 +79,13 @@
     return result;
 }
 
-
+-(ATStackFlexBoxMaker *(^)(BOOL))hidden{
+    __weak typeof(self) wself = self;
+    ATStackFlexBoxMaker *(^result)(BOOL) = ^(BOOL value){
+        wself.view.info.hidden = value;
+        return wself;
+    };
+    return result;
+}
 
 @end

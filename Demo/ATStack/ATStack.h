@@ -71,11 +71,23 @@ typedef enum ATStackViewPosition: NSUInteger {
 
 -(void)addSpacing:(CGFloat)spacing;
 
--(void)addSpacing:(CGFloat)spacing postion:(ATStackViewPosition)postion;
+-(void)addSpacing:(CGFloat)spacing position:(ATStackViewPosition)position;
 
 -(void)layoutFrame;
 
 -(void)removeArrangedSubview:(UIView*)view;
+
+-(void)removeLastObjectWithPositon:(ATStackViewPosition)position;
+
+-(void)removeFisrstObjectWithPositon:(ATStackViewPosition)position;
+
+-(void)removeobjectAtIndex:(NSUInteger)index positon:(ATStackViewPosition)position;
+
+-(void)removeAll;
+
+-(void)removeAllWithPositon:(ATStackViewPosition)position;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

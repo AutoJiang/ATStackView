@@ -17,7 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView(ATStack)
 
-//快速为view添加一个Stack，返回ATVerStack
+@property (nonatomic, strong) ATStack *stack;
+
+@property (nonatomic, readonly, strong) ATStackInfo *info;
+
+@property (nonatomic, readonly, weak) ATStack *superStack;
 
 /**快速创建一个垂直方向、子控件从上到下布局的栈*/
 -(ATVerStack *)getStackVer;
@@ -38,12 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
 -(UIView *)addLineSeparateWithRightPadding:(CGFloat)rightPadding;
-
-@property (nonatomic, strong) ATStack *stack;
-
-@property (nonatomic, readonly, strong) ATStackInfo *info;
-
-@property (nonatomic, readonly, weak) ATStack *superStack;
 
 -(UIView*)at_makeFlexBox:(void(^)(ATStackFlexBoxMaker *make))block;
 
