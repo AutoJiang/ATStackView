@@ -16,11 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset;
 
--(void)layoutHeadFrames;
+- (void)layoutHeadFrames;
 
--(void)layoutCenterFrames;
+- (void)layoutCenterFrames;
 
--(void)layoutTailFrames;
+- (void)layoutTailFrames;
 
 
 @end

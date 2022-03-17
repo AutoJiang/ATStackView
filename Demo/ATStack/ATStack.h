@@ -61,32 +61,35 @@ typedef enum ATStackViewPosition: NSUInteger {
 
 @property(nonatomic, readonly, assign) CGRect frame;
 
--(UIView*)addArrangedSubview:(UIView*)view;
+- (UIView*)addArrangedSubview:(UIView*)view;
 
--(UIView*)addArrangedSubviewCenter:(UIView*)view;
+- (UIView*)addArrangedSubviewCenter:(UIView*)view;
 
--(UIView*)addArrangedSubviewTail:(UIView*)view;
+- (UIView*)addArrangedSubviewTail:(UIView*)view;
 
--(UIView*)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position;
+- (UIView*)addArrangedSubview:(UIView*)view position:(ATStackViewPosition)position;
 
--(void)addSpacing:(CGFloat)spacing;
+- (void)addSpacing:(CGFloat)spacing;
 
--(void)addSpacing:(CGFloat)spacing position:(ATStackViewPosition)position;
+- (void)addSpacing:(CGFloat)spacing position:(ATStackViewPosition)position;
 
--(void)layoutFrame;
+- (void)layoutFrame;
 
--(void)removeArrangedSubview:(UIView*)view;
+- (void)removeArrangedSubview:(UIView*)view;
 
--(void)removeLastObjectWithPositon:(ATStackViewPosition)position;
+- (UIView*)removeLastObjectWithPositon:(ATStackViewPosition)position;
 
--(void)removeFisrstObjectWithPositon:(ATStackViewPosition)position;
+- (UIView*)removeFisrstObjectWithPositon:(ATStackViewPosition)position;
 
--(void)removeobjectAtIndex:(NSUInteger)index positon:(ATStackViewPosition)position;
+- (UIView*)removeobjectAtIndex:(NSUInteger)index positon:(ATStackViewPosition)position;
 
--(void)removeAll;
+- (void)removeAll;
 
--(void)removeAllWithPositon:(ATStackViewPosition)position;
+- (void)removeAllWithPositon:(ATStackViewPosition)position;
 
+- (UIView *)objectAtIndex:(NSUInteger)index position:(ATStackViewPosition)position;
+
+- (NSUInteger)countWithPositon:(ATStackViewPosition)position;
 
 @end
 

@@ -11,21 +11,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ATStackFlexBoxMaker : NSObject
 
--(instancetype)initWithView:(UIView *)view;
+- (instancetype)initWithView:(UIView *)view;
 
--(ATStackFlexBoxMaker *(^)(CGFloat))flex;
+- (ATStackFlexBoxMaker *(^)(CGFloat))flex;
 
--(ATStackFlexBoxMaker *(^)(CGFloat))width;
+- (ATStackFlexBoxMaker *(^)(CGFloat))width;
 
--(ATStackFlexBoxMaker *(^)(CGFloat))height;
+- (ATStackFlexBoxMaker *(^)(CGFloat))height;
 
--(ATStackFlexBoxMaker *(^)(CGFloat))space;
+- (ATStackFlexBoxMaker *(^)(CGFloat))space;
 
--(ATStackFlexBoxMaker *(^)(CGFloat))multipliedBy;
+- (ATStackFlexBoxMaker *(^)(CGFloat))multipliedBy;
 
--(ATStackFlexBoxMaker *(^)(ATStackAlignment))alignment;
+- (ATStackFlexBoxMaker *(^)(ATStackAlignment))alignment;
 
--(ATStackFlexBoxMaker *(^)(BOOL))hidden;
+- (ATStackFlexBoxMaker *(^)(BOOL))hidden;
 @end
 
 NS_ASSUME_NONNULL_END

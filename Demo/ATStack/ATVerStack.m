@@ -12,7 +12,7 @@
 
 @implementation ATVerStack
 
-- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)insets{
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)insets {
     self = [super initWithView:view inset:insets];
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisVertical] forKey:@"axis"];
@@ -21,7 +21,7 @@
     return self;
 }
 
--(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
+- (CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews {
     CGFloat width = self.frame.size.width;
     CGFloat y = inset.top;
     CGFloat sum = 0;
@@ -59,25 +59,25 @@
         CGFloat w = v.info.width > 0 ? v.info.width: v.frame.size.width;
         CGFloat x = inset.left;
         CGFloat h = v.info.height > 0 ? v.info.height: v.frame.size.height;
-        if(v.info.multipliedBy){
+        if (v.info.multipliedBy) {
             x = inset.left;
             w = width*v.info.multipliedBy;
-        }else{
+        }else {
             if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentLeading) ||
-                (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentLeading)){
+                (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentLeading)) {
                 x = inset.left;
-            }else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentCenter) ||
-                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentCenter)){
+            } else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentCenter) ||
+                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentCenter)) {
                 x = (width - w) / 2.0 + inset.left;
-            }else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentTrailing) ||
-                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentTrailing)){
+            } else if ((v.info.alignment != ATStackAlignmentAuto && v.info.alignment == ATStackAlignmentTrailing) ||
+                      (v.info.alignment == ATStackAlignmentAuto && self.alignment == ATStackAlignmentTrailing)) {
                 x = width - w + inset.left;
             }
         }
         v.frame = CGRectMake(x, y, w, h);
         if ([self.view isKindOfClass:[UIScrollView class]]) {
             ((UIScrollView*)self.view).contentSize = CGSizeMake(CGRectGetMaxX(v.frame) + self.spacing + v.info.space, CGRectGetMaxY(v.frame) + self.spacing + v.info.space);
-        }else{
+        } else {
             if (CGRectGetMaxY(v.frame) + self.spacing + v.info.space > self.view.frame.size.height && self.view.info.height == 0) {
                 self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, CGRectGetMaxY(v.frame) + self.spacing + v.info.space);
             }
@@ -91,24 +91,23 @@
     return y;
 }
 
--(void)layoutHeadFrames{
+- (void)layoutHeadFrames {
     [self layoutCommonFrames:self->arrangedSubviewsHead];
 }
 
--(void)layoutCenterFrames{
+- (void)layoutCenterFrames {
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
-    CGFloat y = (self.frame.size.height - length)/2;
+    CGFloat y = (self.frame.size.height - length + inset.top) / 2 ;
     [self moveY:y arrangedSubviews:self->arrangedSubviewsCenter];
-    
 }
 
--(void)layoutTailFrames{
+- (void)layoutTailFrames {
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
     CGFloat y = self.frame.size.height - length + inset.top;
     [self moveY:y arrangedSubviews:self->arrangedSubviewsTail];
 }
 
--(void)moveY:(CGFloat)y arrangedSubviews:(NSMutableArray* )arrangedSubviews{
+- (void)moveY:(CGFloat)y arrangedSubviews:(NSMutableArray* )arrangedSubviews {
     for (UIView *v in arrangedSubviews) {
         v.frame = CGRectMake(v.frame.origin.x, y + v.frame.origin.y, v.frame.size.width, v.frame.size.height);
     }

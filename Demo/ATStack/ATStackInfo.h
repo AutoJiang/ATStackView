@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ATStackInfo;
 @protocol ATStackInfoDelegate <NSObject>
 
--(void)stackInfoValueDidChange:(ATStackInfo*)info;
+- (void)stackInfoValueDidChange:(ATStackInfo*)info;
 
 @end
 
@@ -38,7 +38,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) UIView *separateLine;
 
+@property(nonatomic, assign) CGFloat separateLineLeftPadding;
+
+@property(nonatomic, assign) CGFloat separateLineRightPadding;
+
 @property(nonatomic, weak) id<ATStackInfoDelegate> delegate;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,8 +12,7 @@
 
 @implementation ATHorStack
 
-
-- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset{
+- (instancetype)initWithView:(UIView*)view inset:(UIEdgeInsets)inset {
     self = [super initWithView:view inset:inset];
     if(self){
         [self setValue:[NSNumber numberWithInt:ATStackConstraintAxisHorizontal] forKey:@"axis"];
@@ -22,7 +21,7 @@
     return self;
 }
 
--(CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews{
+- (CGFloat)layoutCommonFrames:(NSMutableArray* )arrangedSubviews {
     CGFloat height = self.frame.size.height;
     CGFloat x = inset.left;
     
@@ -95,23 +94,23 @@
     return x;
 }
 
--(void)layoutHeadFrames{
+- (void)layoutHeadFrames {
     [self layoutCommonFrames:self->arrangedSubviewsHead];
 }
 
--(void)layoutCenterFrames{
+- (void)layoutCenterFrames {
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsCenter];
-    CGFloat x = (self.frame.size.width - length)/2;
+    CGFloat x = (self.frame.size.width - length + inset.left)/2;
     [self moveX:x arrangedSubviews:self->arrangedSubviewsCenter];
 }
 
--(void)layoutTailFrames{
+- (void)layoutTailFrames {
     CGFloat length = [self layoutCommonFrames:self->arrangedSubviewsTail];
     CGFloat x = self.frame.size.width - length + inset.left;
     [self moveX:x arrangedSubviews:self->arrangedSubviewsTail];
 }
 
--(void)moveX:(CGFloat)x arrangedSubviews:(NSMutableArray* )arrangedSubviews{
+- (void)moveX:(CGFloat)x arrangedSubviews:(NSMutableArray* )arrangedSubviews {
     for (UIView *v in arrangedSubviews) {
         v.frame = CGRectMake(x + v.frame.origin.x, v.frame.origin.y, v.frame.size.width, v.frame.size.height);
     }

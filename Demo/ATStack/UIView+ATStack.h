@@ -24,56 +24,56 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, weak) ATStack *superStack;
 
 /**快速创建一个垂直方向、子控件从上到下布局的栈*/
--(ATVerStack *)getStackVer;
+- (ATVerStack *)getStackVer;
 
 /**快速创建一个水平方向、子控件从左到右布局的栈*/
--(ATHorStack *)getStackHor;
+- (ATHorStack *)getStackHor;
 
 //inset代表内间距
--(ATVerStack *)getStackVerWithInset:(UIEdgeInsets)inset;
+- (ATVerStack *)getStackVerWithInset:(UIEdgeInsets)inset;
 
--(ATHorStack *)getStackHorWithInset:(UIEdgeInsets)inset;
+- (ATHorStack *)getStackHorWithInset:(UIEdgeInsets)inset;
 
 //添加分割线
--(UIView *)addLineSeparate;
+- (UIView *)addLineSeparate;
 //返回的分割线可自定义颜色和高度
--(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding rightPadding: (CGFloat)rightPadding;
+- (UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding rightPadding: (CGFloat)rightPadding;
 
--(UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
+- (UIView *)addLineSeparateWithLelfPadding:(CGFloat)leftPadding;
 
--(UIView *)addLineSeparateWithRightPadding:(CGFloat)rightPadding;
+- (UIView *)addLineSeparateWithRightPadding:(CGFloat)rightPadding;
 
--(UIView*)at_makeFlexBox:(void(^)(ATStackFlexBoxMaker *make))block;
+- (UIView*)at_makeFlexBox:(void(^)(ATStackFlexBoxMaker *make))block;
 
--(UIView *)setAt_hidden:(BOOL)hidden;
+- (UIView *)setAt_hidden:(BOOL)hidden;
 
--(BOOL)at_hidden;
+- (BOOL)at_hidden;
 
--(UIView*)setAt_width:(CGFloat)width;
+- (UIView*)setAt_width:(CGFloat)width;
 
--(CGFloat)at_width;
+- (CGFloat)at_width;
 
--(UIView*)setAt_height:(CGFloat)height;
+- (UIView*)setAt_height:(CGFloat)height;
 
--(CGFloat)at_height;
+- (CGFloat)at_height;
 
--(UIView*)setAt_flex:(CGFloat)flex;
+- (UIView*)setAt_flex:(CGFloat)flex;
 
--(CGFloat)at_flex;
+- (CGFloat)at_flex;
 
--(UIView*)setAt_space:(CGFloat)space;
+- (UIView*)setAt_space:(CGFloat)space;
 
--(CGFloat)at_space;
+- (CGFloat)at_space;
 
--(UIView*)setAt_multipliedBy:(CGFloat)multipliedBy;
+- (UIView*)setAt_multipliedBy:(CGFloat)multipliedBy;
 
--(CGFloat)at_multipliedBy;
+- (CGFloat)at_multipliedBy;
 
--(UIView*)setAt_alignment:(ATStackAlignment)alignment;
+- (UIView*)setAt_alignment:(ATStackAlignment)alignment;
 
--(ATStackAlignment)at_alignment;
+- (ATStackAlignment)at_alignment;
 
--(UIView*)setStackNeedLayout;
+- (UIView*)setStackNeedLayout;
 
 @end
 
