@@ -60,8 +60,8 @@
 }
 
 - (void)setHidden:(BOOL)hidden {
-    if (_height != hidden) {
-        _hidden =  hidden;
+    if (_hidden != hidden) {
+        _hidden = hidden;
         [self valueDidChange];
     }
 }
