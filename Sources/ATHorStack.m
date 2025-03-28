@@ -29,7 +29,9 @@
     for (int i = 0; i < arrangedSubviews.count; i++) {
         UIView *v = arrangedSubviews[i];
         if(v.at_hidden) continue;
-        [v sizeToFit];
+        if (![v isKindOfClass:[UIImageView class]]) {
+            [v sizeToFit];
+        }
         sum += v.info.flex;
     }
     if (sum > 0 ) {
